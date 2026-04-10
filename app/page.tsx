@@ -1,11 +1,11 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { Benefits } from "@/components/benefits"
-import { Packages } from "@/components/packages"
-import { Gallery } from "@/components/gallery"
-import { Testimonials } from "@/components/testimonials"
-import { Contact } from "@/components/contact"
-import { Footer } from "@/components/footer"
+import { Hero } from "@/components/hero";
+import { Benefits } from "@/components/benefits";
+import { Packages } from "@/components/packages";
+import { Gallery } from "@/components/gallery";
+import { Testimonials } from "@/components/testimonials";
+import { Contact } from "@/components/contact";
+import { Footer } from "@/components/footer";
+import { Header } from "@radix-ui/react-accordion";
 
 export default function Home() {
   return (
@@ -19,5 +19,5 @@ export default function Home() {
       <Contact />
       <Footer />
     </main>
-  )
+  );
 }

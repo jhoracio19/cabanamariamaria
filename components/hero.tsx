@@ -11,7 +11,7 @@ export function Hero() {
       {/* BACKGROUND OPTIMIZADO */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero.jpg" // Asegúrate que el nombre coincidaasd
+          src="/gallery/hero.jpg" // Asegúrate que el nombre coincidaasd
           alt="Interior del salón Cabaña María María decorado para evento"
           fill
           priority

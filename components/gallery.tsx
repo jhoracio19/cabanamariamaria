@@ -14,8 +14,8 @@ const galleryImages = [
     className: "col-span-1 row-span-1",
   },
   {
-    src: "/images/banquete-detalle.jpg", // Foto del plato de comida o buffet
-    alt: "Banquete gourmet: Bistec en salsa morita y guarniciones",
+    src: "/gallery/decoracion.jpg", // Foto del plato de comida o buffet
+    alt: "Montaje elegante",
     className: "col-span-1 row-span-1",
   },
   {

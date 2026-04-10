@@ -111,7 +111,9 @@ export function Footer() {
             <span className="hidden md:inline text-white/10">|</span>
             <p className="font-sans font-medium tracking-wide">
               Desarrollado por{" "}
-              <span className="text-white font-bold">JH Dev Agency</span>
+              <a href="https://jhdevagency.com/">
+                <span className="text-white font-bold">JH Dev Agency</span>
+              </a>
             </p>
           </div>
         </div>

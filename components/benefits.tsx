@@ -11,7 +11,7 @@ const benefits = [
     icon: Sofa,
     title: "Mobiliario Elegante",
     description:
-      "Mesas, sillas de madera y mantelería de alta calidad incluidos. Todo listo para impresionar a tus invitados desde el primer segundo.",
+      "Mesas, sillas y mantelería de alta calidad incluidos. Todo listo para impresionar a tus invitados desde el primer segundo.",
   },
   {
     icon: TreePine,

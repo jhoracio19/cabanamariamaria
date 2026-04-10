@@ -1,54 +1,65 @@
-import { Sparkles, Sofa, TreePine } from "lucide-react"
+import { Sparkles, Sofa, TreePine } from "lucide-react";
 
 const benefits = [
   {
     icon: Sparkles,
     title: "Servicio Todo Incluido",
-    description: "Olvídate del estrés. Banquete, meseros, decoración y limpieza. Tú solo disfruta tu evento.",
+    description:
+      "Olvídate del estrés. Banquete, meseros, decoración y limpieza. Tú solo llega a disfrutar tu evento como un invitado más.",
   },
   {
     icon: Sofa,
     title: "Mobiliario Elegante",
-    description: "Mesas, sillas, mantelería de primera calidad incluidos. Todo listo para impresionar a tus invitados.",
+    description:
+      "Mesas, sillas de madera y mantelería de alta calidad incluidos. Todo listo para impresionar a tus invitados desde el primer segundo.",
   },
   {
     icon: TreePine,
     title: "Jardín y Área Infantil",
-    description: "Amplio jardín con áreas verdes y zona de juegos para que los pequeños también disfruten.",
+    description:
+      "Amplio jardín con áreas verdes impecables y zona de juegos segura para que los pequeños también tengan una tarde inolvidable.",
   },
-]
+];
 
 export function Benefits() {
   return (
-    <section id="beneficios" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Nuestra diferencia
+    <section id="beneficios" className="py-20 md:py-28 bg-[#FAF9F6]">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Encabezado de la Sección */}
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <span className="text-[#D35400] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] mb-4 block">
+            Nuestra Diferencia
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
-            ¿Por qué elegirnos?
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#5C4033] mb-6 leading-tight">
+            ¿Por qué celebrar en Cabaña María María?
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Más de 15 años creando momentos inolvidables para familias en Tlaxcala
+          <div className="w-20 h-1 bg-[#D35400] mx-auto mb-6" />
+          <p className="font-sans text-[#2D3748]/80 text-lg md:text-xl leading-relaxed">
+            Más de 15 años creando momentos inolvidables para las familias de
+            Tlaxcala con calidez y profesionalismo.
           </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {/* Cuadrícula de Beneficios */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+              className="group relative bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <benefit.icon className="w-7 h-7 text-primary" />
+              {/* Decoración sutil en la esquina */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#D35400]/5 rounded-tr-3xl rounded-bl-[100px] transition-colors group-hover:bg-[#D35400]/10" />
+
+              {/* Icono */}
+              <div className="relative w-16 h-16 rounded-2xl bg-[#FAF9F6] border border-gray-100 flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                <benefit.icon className="w-8 h-8 text-[#D35400]" />
               </div>
-              <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground mb-3">
+
+              {/* Texto */}
+              <h3 className="font-serif text-2xl font-bold text-[#5C4033] mb-4">
                 {benefit.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="font-sans text-[#2D3748]/70 leading-relaxed text-lg">
                 {benefit.description}
               </p>
             </div>
@@ -56,5 +67,5 @@ export function Benefits() {
         </div>
       </div>
     </section>
-  )
+  );
 }

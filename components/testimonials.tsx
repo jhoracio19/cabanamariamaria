@@ -1,79 +1,102 @@
-import { Star, Quote } from "lucide-react"
+import Image from "next/image";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "María Elena García",
-    event: "Boda",
+    name: "Paola Rojas",
+    event: "Fiesta de 3 años",
     rating: 5,
-    text: "¡Fue la boda de mis sueños! El servicio fue impecable, la comida deliciosa y no tuve que preocuparme por nada. El equipo de Cabaña María María hizo todo perfecto.",
-    image: "/images/testimonial-1.jpg",
+    text: "Celebrar los 3 años de mi hijo aquí fue la mejor decisión. Los niños no salieron del área de juegos y nosotros pudimos platicar tranquilos en el salón. ¡Súper seguro y espacioso!",
+    image: "/images/avatar-1.jpg",
   },
   {
-    name: "Roberto Hernández",
-    event: "XV Años",
+    name: "Ricardo Méndez",
+    event: "Reunión Familiar / Carne Asada",
     rating: 5,
-    text: "Celebramos los XV años de mi hija y superó todas nuestras expectativas. El jardín es hermoso, los meseros muy atentos y mis invitados quedaron encantados con la comida.",
-    image: "/images/testimonial-2.jpg",
+    text: "Rentamos solo las instalaciones para una convivencia familiar. El jardín es perfecto para una carne asada, muy privado y con todo lo necesario. El ambiente de la cabaña es único.",
+    image: "/images/avatar-2.jpg",
+  },
+  {
+    name: "Lic. Arturo Torres",
+    event: "Conferencia Empresarial",
+    rating: 5,
+    text: "Buscábamos un lugar fuera de la oficina para nuestra planeación anual. La tranquilidad de la zona y la calidez de la madera ayudaron mucho a la integración del equipo. Muy profesional.",
+    image: "/images/avatar-4.jpg",
   },
   {
     name: "Ana Lucía Mendoza",
     event: "Bautizo",
     rating: 5,
-    text: "Excelente lugar para eventos familiares. El área infantil fue perfecta para los niños, y nosotros pudimos disfrutar tranquilos. ¡El servicio todo incluido vale cada peso!",
-    image: "/images/testimonial-3.jpg",
+    text: "Excelente servicio todo incluido. No tuvimos que preocuparnos por nada del banquete ni el montaje. La comida deliciosa y la atención de los meseros de diez.",
+    image: "/images/avatar-3.jpg",
   },
-]
+];
 
 export function Testimonials() {
   return (
-    <section className="py-16 md:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+    <section className="py-20 md:py-28 bg-[#FAF9F6]">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Encabezado */}
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <span className="text-[#D35400] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] mb-4 block">
             Testimonios
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
-            Lo que dicen nuestros clientes
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#5C4033] mb-6">
+            Experiencias Reales
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Historias reales de familias que confiaron en nosotros
+          <div className="w-20 h-1 bg-[#D35400] mx-auto mb-6" />
+          <p className="font-sans text-[#2D3748]/70 text-lg md:text-xl">
+            Desde reuniones casuales hasta eventos corporativos, nos adaptamos a
+            tu visión.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        {/* Cuadrícula de Testimonios - Ahora con 4 items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl p-6 md:p-8 shadow-sm border border-border hover:shadow-lg transition-shadow duration-300"
+              className="relative bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Quote Icon */}
-              <div className="mb-4">
-                <Quote className="w-10 h-10 text-primary/20" />
+              <div>
+                {/* Icono de Comilla */}
+                <div className="absolute top-4 right-4 opacity-10">
+                  <Quote className="w-8 h-8 text-[#D35400]" />
+                </div>
+
+                {/* Estrellas */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#D35400] text-[#D35400]"
+                    />
+                  ))}
+                </div>
+
+                {/* Texto */}
+                <p className="font-sans text-[#2D3748] text-md italic leading-relaxed mb-6">
+                  {`"${testimonial.text}"`}
+                </p>
               </div>
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                ))}
-              </div>
-
-              {/* Text */}
-              <p className="text-foreground leading-relaxed mb-6">
-                {`"${testimonial.text}"`}
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full bg-muted bg-cover bg-center"
-                  style={{ backgroundImage: `url('${testimonial.image}')` }}
-                />
+              {/* Autor */}
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100 mt-auto">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#D35400]/20 flex-shrink-0">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.event}</p>
+                  <p className="font-serif font-bold text-[#5C4033] text-sm leading-tight">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-[10px] font-bold text-[#D35400] uppercase tracking-wider mt-1">
+                    {testimonial.event}
+                  </p>
                 </div>
               </div>
             </div>
@@ -81,5 +104,5 @@ export function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,106 +1,127 @@
-import { MapPin, Phone, Clock, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Contact() {
+  const waLink =
+    "https://wa.me/522462132732?text=Hola,%20me%20gustaría%20agendar%20una%20visita%20para%20conocer%20las%20instalaciones%20de%20la%20Cabaña.";
+
+  // Link de Google Maps para el mapa interactivo
+  const mapUrl =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.411651848523!2d-98.2435166!3d19.2970425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfdf4a50000001%3a0x2479f648d085025a!2sLa%20Trinidad%20Tepehitec%2C%20Tlax.!5e0!3m2!1ses-419!2smx!4v1712620000000!5m2!1ses-419!2smx";
+
   return (
-    <section id="contacto" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Ubicación y Contacto
+    <section id="contacto" className="py-20 md:py-28 bg-[#FAF9F6]">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Encabezado de Sección */}
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <span className="text-[#D35400] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] mb-4 block">
+            Contacto
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 mb-4 text-balance">
-            El Mejor Salón de Eventos en La Trinidad Tepehitec, Tlaxcala
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#5C4033] mb-6">
+            ¿Dónde estamos ubicados?
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Estamos listos para hacer realidad tu evento soñado
+          <div className="w-20 h-1 bg-[#D35400] mx-auto mb-6" />
+          <p className="font-sans text-[#2D3748]/70 text-lg md:text-xl leading-relaxed">
+            Estamos en el corazón de Tlaxcala, listos para recibirte y mostrarte
+            el lugar de tu próximo evento.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {/* Address */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <MapPin className="w-6 h-6 text-primary" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-start">
+          {/* Información de Contacto */}
+          <div className="space-y-8">
+            {/* Dirección */}
+            <div className="flex gap-6 group">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#D35400] transition-colors duration-300">
+                <MapPin className="w-7 h-7 text-[#D35400] group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Dirección</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Privada el Palmar #5<br />
-                  La Trinidad Tepehitec<br />
-                  Tlaxcala, México
+                <h3 className="font-serif text-xl font-bold text-[#5C4033] mb-2">
+                  Dirección
+                </h3>
+                <p className="text-[#2D3748]/70 text-lg leading-relaxed">
+                  Privada el Palmar #5, La Trinidad Tepehitec,
+                  <br />
+                  Tlaxcala, Tlax. México. CP. 90110
                 </p>
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <Phone className="w-6 h-6 text-primary" />
+            {/* Teléfono */}
+            <div className="flex gap-6 group">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#D35400] transition-colors duration-300">
+                <Phone className="w-7 h-7 text-[#D35400] group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Teléfono</h3>
-                <a 
-                  href="tel:+522462132732" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                <h3 className="font-serif text-xl font-bold text-[#5C4033] mb-2">
+                  Teléfono
+                </h3>
+                <a
+                  href="tel:+522462132732"
+                  className="text-[#2D3748]/70 text-lg hover:text-[#D35400] transition-colors"
                 >
-                  +52 246 213 2732
+                  246 213 2732
                 </a>
               </div>
             </div>
 
-            {/* Hours */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <Clock className="w-6 h-6 text-primary" />
+            {/* Horarios */}
+            <div className="flex gap-6 group">
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#D35400] transition-colors duration-300">
+                <Clock className="w-7 h-7 text-[#D35400] group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Horarios de Atención</h3>
-                <p className="text-muted-foreground">
-                  Lunes a Viernes: 9:00 AM - 7:00 PM<br />
+                <h3 className="font-serif text-xl font-bold text-[#5C4033] mb-2">
+                  Horarios de Atención
+                </h3>
+                <p className="text-[#2D3748]/70 text-lg">
+                  Lunes a Viernes: 9:00 AM - 7:00 PM
+                  <br />
                   Sábados: 9:00 AM - 3:00 PM
                 </p>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="pt-4">
+            {/* Botón de Acción Especial */}
+            <div className="pt-6">
               <Button
                 asChild
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 rounded-full shadow-lg shadow-primary/20"
+                className="bg-[#D35400] hover:bg-[#a84300] text-white py-8 px-10 rounded-2xl shadow-xl shadow-orange-900/20 gap-3 text-lg font-bold transition-transform hover:scale-105"
               >
-                <a
-                  href="https://wa.me/522462132732?text=Hola,%20me%20gustaría%20agendar%20una%20visita%20para%20conocer%20las%20instalaciones"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Agendar una Visita</span>
+                <a href={waLink} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-6 h-6" />
+                  <span>Agendar una Visita Guiada</span>
                 </a>
               </Button>
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-muted rounded-2xl overflow-hidden min-h-[300px] lg:min-h-[400px]">
+          {/* Mapa Interactivo de Google */}
+          <div className="relative h-[400px] lg:h-[500px] w-full rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.123!2d-98.2371!3d19.3187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDE5JzA3LjMiTiA5OMKwMTQnMTMuNiJX!5e0!3m2!1ses!2smx!4v1234567890"
+              src={mapUrl}
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "300px" }}
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Ubicación de Cabaña María María"
-              className="w-full h-full min-h-[300px] lg:min-h-[400px]"
+              className="grayscale-[0.2] contrast-[1.1] transition-all duration-500 group-hover:grayscale-0"
             />
+            {/* Botón flotante sobre el mapa para móviles */}
+            <div className="absolute bottom-4 left-4 right-4 md:hidden">
+              <a
+                href="https://maps.app.goo.gl/uP6p9V6nL7R8N6V87" // Actualiza con tu link de Maps real
+                target="_blank"
+                className="flex items-center justify-center bg-white/90 backdrop-blur-sm py-3 rounded-xl text-[#5C4033] font-bold text-sm shadow-lg"
+              >
+                Abrir en Google Maps
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

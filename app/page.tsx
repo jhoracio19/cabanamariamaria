@@ -5,7 +5,7 @@ import { Gallery } from "@/components/gallery";
 import { Testimonials } from "@/components/testimonials";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
-import { Header } from "@radix-ui/react-accordion";
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (

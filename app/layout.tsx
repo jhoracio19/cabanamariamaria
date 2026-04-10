@@ -92,20 +92,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es">
+    <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <title>Next.js</title>
       </head>
-      <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
-      >
+      <body>
         {children}
         <Analytics />
-        <WhatsAppButton />
-        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );

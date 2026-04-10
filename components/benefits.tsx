@@ -35,7 +35,7 @@ export function Benefits() {
           </h2>
           <div className="w-20 h-1 bg-[#D35400] mx-auto mb-6" />
           <p className="font-sans text-[#2D3748]/80 text-lg md:text-xl leading-relaxed">
-            Más de 15 años creando momentos inolvidables para las familias de
+            Más de 5 años creando momentos inolvidables para las familias de
             Tlaxcala con calidez y profesionalismo.
           </p>
         </div>

@@ -103,6 +103,7 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
       >
         {children}
+        <Analytics />
         <WhatsAppButton />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

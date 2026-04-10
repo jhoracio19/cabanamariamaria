@@ -5,7 +5,7 @@ const benefits = [
     icon: Sparkles,
     title: "Servicio Todo Incluido",
     description:
-      "Olvídate del estrés. Banquete, meseros, decoración y limpieza. Tú solo llega a disfrutar tu evento como un invitado más.",
+      "Olvídate del estrés. Banquete, meseros y limpieza. Tú solo llega a disfrutar tu evento como un invitado más.",
   },
   {
     icon: Sofa,

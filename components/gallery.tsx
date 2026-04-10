@@ -4,27 +4,27 @@ import Image from "next/image";
 
 const galleryImages = [
   {
-    src: "/gallery/principal.jpg", // Tu foto estrella del interior
+    src: "/gallery/principal.webp", // Tu foto estrella del interior
     alt: "Elegante salón interior con techo de madera y mesas decoradas",
     className: "col-span-2 row-span-2",
   },
   {
-    src: "/gallery/jardin-juegos.jpg", // Foto del jardín con resbaladilla
+    src: "/gallery/jardin-juegos.webp", // Foto del jardín con resbaladilla
     alt: "Amplio jardín con área de juegos infantiles y áreas verdes",
     className: "col-span-1 row-span-1",
   },
   {
-    src: "/gallery/decoracion.jpg", // Foto del plato de comida o buffet
+    src: "/gallery/decoracion.webp", // Foto del plato de comida o buffet
     alt: "Montaje elegante",
     className: "col-span-1 row-span-1",
   },
   {
-    src: "/gallery/fiesta-tematica.jpg", // Foto del interior con decoración temática
+    src: "/gallery/fiesta-tematica.webp", // Foto del interior con decoración temática
     alt: "Montaje temático para fiestas infantiles en salón Cabaña María María",
     className: "col-span-1 row-span-2",
   },
   {
-    src: "/gallery/entrada.jpg", // Foto de la fachada o entrada
+    src: "/gallery/entrada.webp", // Foto de la fachada o entrada
     alt: "Entrada principal y fachada acogedora de la Cabaña",
     className: "col-span-1 row-span-1",
   },

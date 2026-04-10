@@ -7,7 +7,7 @@ export function Contact() {
 
   // Link de Google Maps para el mapa interactivo
   const mapUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.411651848523!2d-98.2435166!3d19.2970425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfdf4a50000001%3a0x2479f648d085025a!2sLa%20Trinidad%20Tepehitec%2C%20Tlax.!5e0!3m2!1ses-419!2smx!4v1712620000000!5m2!1ses-419!2smx";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.40665878483!2d-98.25838622452967!3d19.30815234464297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1775791657240!5m2!1ses-419!2smx";
 
   return (
     <section id="contacto" className="py-20 md:py-28 bg-[#FAF9F6]">
@@ -75,9 +75,9 @@ export function Contact() {
                   Horarios de Atención
                 </h3>
                 <p className="text-[#2D3748]/70 text-lg">
-                  Lunes a Viernes: 9:00 AM - 7:00 PM
+                  Lunes a Viernes: 9:00 AM - 5:00 PM
                   <br />
-                  Sábados: 9:00 AM - 3:00 PM
+                  Sábados y Domignos: 9:00 AM - 1:00 PM
                 </p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export function Contact() {
             {/* Botón flotante sobre el mapa para móviles */}
             <div className="absolute bottom-4 left-4 right-4 md:hidden">
               <a
-                href="https://maps.app.goo.gl/uP6p9V6nL7R8N6V87" // Actualiza con tu link de Maps real
+                href="https://maps.app.goo.gl/8QYeZPjLudsvLzrx6" // Actualiza con tu link de Maps real
                 target="_blank"
                 className="flex items-center justify-center bg-white/90 backdrop-blur-sm py-3 rounded-xl text-[#5C4033] font-bold text-sm shadow-lg"
               >
@@ -125,3 +125,4 @@ export function Contact() {
     </section>
   );
 }
+// <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.40665878483!2d-98.25838622452967!3d19.30815234464297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1775791657240!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

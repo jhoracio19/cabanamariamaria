@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { Star, Quote } from "lucide-react";
+// 1. Eliminamos el import de next/image y agregamos UserCircle
+import { Star, Quote, UserCircle } from "lucide-react";
 
 const testimonials = [
   {
@@ -7,28 +7,25 @@ const testimonials = [
     event: "Fiesta de 3 años",
     rating: 5,
     text: "Celebrar los 3 años de mi hijo aquí fue la mejor decisión. Los niños no salieron del área de juegos y nosotros pudimos platicar tranquilos en el salón. ¡Súper seguro y espacioso!",
-    image: "/images/avatar-1.jpg",
+    // 2. Eliminamos la propiedad 'image'
   },
   {
     name: "Ricardo Méndez",
     event: "Reunión Familiar / Carne Asada",
     rating: 5,
     text: "Rentamos solo las instalaciones para una convivencia familiar. El jardín es perfecto para una carne asada, muy privado y con todo lo necesario. El ambiente de la cabaña es único.",
-    image: "/images/avatar-2.jpg",
   },
   {
     name: "Lic. Arturo Torres",
     event: "Conferencia Empresarial",
     rating: 5,
     text: "Buscábamos un lugar fuera de la oficina para nuestra planeación anual. La tranquilidad de la zona y la calidez de la madera ayudaron mucho a la integración del equipo. Muy profesional.",
-    image: "/images/avatar-4.jpg",
   },
   {
     name: "Ana Lucía Mendoza",
     event: "Bautizo",
     rating: 5,
     text: "Excelente servicio todo incluido. No tuvimos que preocuparnos por nada del banquete ni el montaje. La comida deliciosa y la atención de los meseros de diez.",
-    image: "/images/avatar-3.jpg",
   },
 ];
 
@@ -51,7 +48,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Cuadrícula de Testimonios - Ahora con 4 items */}
+        {/* Cuadrícula de Testimonios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
@@ -75,21 +72,21 @@ export function Testimonials() {
                 </div>
 
                 {/* Texto */}
-                <p className="font-sans text-[#2D3748] text-md italic leading-relaxed mb-6">
+                <p className="font-sans text-[#2D3748] text-md italic leading-relaxed mb-6 relative z-10">
                   {`"${testimonial.text}"`}
                 </p>
               </div>
 
-              {/* Autor */}
+              {/* Autor - Sección modificada */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100 mt-auto">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#D35400]/20 flex-shrink-0">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
+                {/* 3. Reemplazamos el div del Image por el icono */}
+                <div className="w-12 h-12 rounded-full border-2 border-[#D35400]/20 flex items-center justify-center bg-[#FAF9F6] flex-shrink-0">
+                  <UserCircle
+                    className="w-8 h-8 text-[#D35400]/70"
+                    strokeWidth={1.5}
                   />
                 </div>
+
                 <div>
                   <p className="font-serif font-bold text-[#5C4033] text-sm leading-tight">
                     {testimonial.name}

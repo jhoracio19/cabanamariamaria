@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const packages = [
   {
     name: "Paquete Todo Incluido",
-    price: "350",
+    price: " Desde 350",
     unit: "por persona",
     description:
       "La solución completa para que tú solo te encargues de disfrutar.",
@@ -19,7 +19,7 @@ const packages = [
   },
   {
     name: "Renta de Instalaciones",
-    price: "4,000",
+    price: "Desde 4,000",
     unit: "pago único",
     description:
       "Ideal si ya cuentas con tu banquete y solo buscas el espacio perfecto.",

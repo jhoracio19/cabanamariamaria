@@ -17,6 +17,22 @@ const getEventData = (id: string) => {
       // Agregamos el link de inserción (embed) de Google Maps
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.406774937089!2d-98.25581129999999!3d19.308147299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1777844102262!5m2!1ses-419!2smx",
       themeColor: "#C93756" 
+    },
+
+    // Nuevo evento 
+
+    "credicer-10mayo-a7b2":{
+      host: "Financiera Credicer, Plaza Tlaxcala",
+      celebrant: "Financiera Credicer, Plaza Tlaxcala",
+      eventOrder: "Festejo del 10 de Mayo",
+      date: "14 de Mayo, 2026",
+      time: "11:00 AM",
+      targetDate: "2026-05-14T11:00:00", // Formato para el reloj dinámico
+      dressCode: "Casual (Sin código de vestimenta)",
+      hostPhone: "522461735600",
+      locationUrl: "https://maps.app.goo.gl/EXpsx5jdFKY2C1mQ6", // Misma ubicación de la cabaña
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.406774937089!2d-98.25581129999999!3d19.308147299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1777844102262!5m2!1ses-419!2smx",
+      themeColor: "#D81B60"
     }
   };
   return events[id];

@@ -32,7 +32,7 @@ export default function BanquetesPage() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            "Salón por 7 horas",
+            "Salón por 7 horas de evento",
             "2 horas previas de cortesía para arreglo",
             "Mesa con mantel blanco",
             "Sillas según capacidad",
@@ -53,44 +53,90 @@ export default function BanquetesPage() {
         </div>
       </div>
 
-      {/* 1. SECCIÓN TAQUIZA ($300) */}
-      <div className="max-w-6xl mx-auto mb-24">
+      {/* 1. SECCIÓN TAQUIZA ($300) - LISTA BONITA Y ORDENADA */}
+      <div className="max-w-5xl mx-auto mb-24">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Gran Taquiza Tradicional</h2>
           <span className="inline-block bg-[#5C4033] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
             $300 por persona
           </span>
-          <p className="mt-4 text-gray-500 italic">Incluye Arroz, Frijoles refritos y Verduras. Elige un guisado de cada proteína:</p>
+          <p className="mt-6 text-gray-600 italic">
+            Incluye Arroz rojo, Frijoles refritos y Verduras. Elige un guisado de cada proteína:
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100 space-y-10">
           {/* Puerco */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#D35400]">
-            <h4 className="font-bold text-[#5C4033] mb-4 flex items-center gap-2 border-b pb-2"><Utensils className="w-4 h-4 text-[#D35400]"/> Puerco</h4>
-            <ul className="text-xs text-gray-600 space-y-1.5">
-              <li>Cochinita Pibil, Bistec en Morita, Adobo, Mole verde, Tres chiles, Chicharrón (verde/rojo), Pasilla con nopales, Costillas BBQ, Salsa verde con nopales, Chile quemado, Verdolagas, Carne al pastor.</li>
-            </ul>
+          <div>
+            <h4 className="font-serif text-xl font-bold text-[#D35400] mb-6 flex items-center gap-2 border-b pb-2">
+              <Utensils className="w-5 h-5"/> Especialidades de Puerco (Elige 1)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+              {[
+                "Cochinita Pibil", "Costillas a la BBQ", "Carne enchilada tipo Pastor",
+                "Bistec en Morita con papas", "Puerco en adobo o mole verde",
+                "Chicharrones (Verde o Roja)", "Puerco en pasilla con nopales",
+                "Longaniza en salsa verde", "Puerco en chile quemado", "Puerco en verdolagas"
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-gray-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-orange-200 rounded-full flex-shrink-0" /> {item}
+                </div>
+              ))}
+            </div>
           </div>
+
           {/* Res */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#D35400]">
-            <h4 className="font-bold text-[#5C4033] mb-4 flex items-center gap-2 border-b pb-2"><Beef className="w-4 h-4 text-[#D35400]"/> Res</h4>
-            <ul className="text-xs text-gray-600 space-y-1.5">
-              <li>Bistec a la mexicana, Pasilla con nopales, Picadillo, Tinga de res, Albóndigas, Tortitas en salsa verde, Entomatado, Guajillo con papas, Encebollado con rajas.</li>
-            </ul>
+          <div>
+            <h4 className="font-serif text-xl font-bold text-[#D35400] mb-6 flex items-center gap-2 border-b pb-2">
+              <Beef className="w-5 h-5"/> Especialidades de Res (Elige 1)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+              {[
+                "Bistec a la mexicana", "Tinga de Res", "Picadillo Tradicional",
+                "Albóndigas", "Bistec encebollado con rajas", "Bistec en pasilla o guajillo",
+                "Tortitas de carne en salsa verde", "Entomatado"
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-gray-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-orange-200 rounded-full flex-shrink-0" /> {item}
+                </div>
+              ))}
+            </div>
           </div>
+
           {/* Pollo */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#D35400]">
-            <h4 className="font-bold text-[#5C4033] mb-4 flex items-center gap-2 border-b pb-2"><Drumstick className="w-4 h-4 text-[#D35400]"/> Pollo</h4>
-            <ul className="text-xs text-gray-600 space-y-1.5">
-              <li>Tinga, Mole rojo, Crema de chipotle, Fajitas empanizadas, Al pastor, Tortitas en pasilla, Pechuga rellena, Adobo de tres chiles, Chile quemado, Empapelado.</li>
-            </ul>
+          <div>
+            <h4 className="font-serif text-xl font-bold text-[#D35400] mb-6 flex items-center gap-2 border-b pb-2">
+              <Drumstick className="w-5 h-5"/> Especialidades de Pollo (Elige 1)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+              {[
+                "Tinga de pollo", "Pollo con mole rojo", "Pechuga rellena",
+                "Pollo en crema de chipotle", "Fajitas de pollo empanizada",
+                "Pollo al pastor", "Tortitas de pollo en pasilla",
+                "Pollo en chile quemado", "Pollo empapelado con vegetales"
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-gray-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-orange-200 rounded-full flex-shrink-0" /> {item}
+                </div>
+              ))}
+            </div>
           </div>
+
           {/* Verduras */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#D35400]">
-            <h4 className="font-bold text-[#5C4033] mb-4 flex items-center gap-2 border-b pb-2"><Utensils className="w-4 h-4 text-[#D35400]"/> Verduras</h4>
-            <ul className="text-xs text-gray-600 space-y-1.5">
-              <li>Papa al gratín, Alambre de Portobello, Setas a los tres chiles, Ensalada rusa, Salpicón de pollo, Rajas poblanas, Papas con chorizo.</li>
-            </ul>
+          <div className="pt-4">
+            <h4 className="font-serif text-lg font-bold text-[#5C4033] mb-6 text-center uppercase tracking-widest">
+              Guarniciones de Verduras (Elige 1)
+            </h4>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                "Papa al gratín", "Alambre de Portobello", "Setas a los tres chiles",
+                "Ensalada Rusa", "Salpicón de pollo", "Rajas poblanas", "Papas con chorizo"
+              ].map((v) => (
+                <span key={v} className="bg-orange-50 text-[#D35400] px-4 py-2 rounded-full text-xs font-bold border border-orange-100">
+                  {v}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -109,7 +155,7 @@ export default function BanquetesPage() {
             <h3 className="font-bold text-[#5C4033] text-xl mb-6">Opción 1</h3>
             <div className="space-y-4">
               <p className="text-sm"><strong className="text-[#D35400]">1er Tiempo:</strong> Sopa mixta.</p>
-              <p className="text-sm"><strong className="text-[#D35400]">Plato Fuerte:</strong> Mixiote (2 piezas: pierna y muslo) acompañado de arroz rojo.</p>
+              <p className="text-sm"><strong className="text-[#D35400]">Plato Fuerte:</strong> Mixiote (2 piezas) acompañado de arroz rojo.</p>
             </div>
           </div>
           <div className="bg-white p-8 rounded-3xl shadow-md border-l-4 border-[#D35400]">
@@ -125,7 +171,7 @@ export default function BanquetesPage() {
       {/* 3. SECCIÓN ESPECIALIDADES 3 TIEMPOS ($380) */}
       <div className="max-w-6xl mx-auto mb-24">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Especialidades de la Casa (3 Tiempos)</h2>
+          <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Especialidades Gourmet (3 Tiempos)</h2>
           <span className="inline-block bg-[#5C4033] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
             $380 por persona
           </span>
@@ -135,27 +181,27 @@ export default function BanquetesPage() {
           {[
             {
               title: "Menú 1",
-              items: ["Ensalada Italiana", "Crema de Nuez con Amaretto", "Lomo de Cerdo en Salsa de Mango"]
+              items: ["Ensalada Italiana", "Crema de Nuez con Amaretto", "Lomo en Salsa de Mango"]
             },
             {
               title: "Menú 2",
-              items: ["Empanada de Atún", "Fettuccine Alfredo", "Lomo al Ajo Arriero con Ensalada"]
+              items: ["Empanada de Atún", "Fettuccine Alfredo", "Lomo al Ajo Arriero"]
             },
             {
               title: "Menú 3",
-              items: ["Ensalada Crujiente Cítrica", "Crema de Papa con Tocineta", "Suprema de Pollo en Flor de Calabaza"]
+              items: ["Ensalada Crujiente Cítrica", "Crema de Papa con Tocineta", "Suprema en Flor de Calabaza"]
             },
             {
               title: "Menú 4",
-              items: ["Ensalada Mixta", "Crema de Brócoli a los VI Quesos", "Pollo en Costra de Cacahuate"]
+              items: ["Ensalada Mixta", "Crema Brócoli VI Quesos", "Pollo en Costra de Cacahuate"]
             }
           ].map((menu, i) => (
             <div key={i} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
               <h4 className="font-bold text-[#D35400] mb-4 border-b pb-2">{menu.title}</h4>
               <ul className="text-xs text-gray-600 space-y-3 font-medium">
-                <li><span className="text-[#5C4033] block text-[10px] uppercase">Entrada</span> {menu.items[0]}</li>
-                <li><span className="text-[#5C4033] block text-[10px] uppercase">Sopa/Crema</span> {menu.items[1]}</li>
-                <li><span className="text-[#5C4033] block text-[10px] uppercase">Fuerte</span> {menu.items[2]}</li>
+                <li><span className="text-[#5C4033] block text-[10px] uppercase font-bold">Entrada</span> {menu.items[0]}</li>
+                <li><span className="text-[#5C4033] block text-[10px] uppercase font-bold">Sopa/Crema</span> {menu.items[1]}</li>
+                <li><span className="text-[#5C4033] block text-[10px] uppercase font-bold">Fuerte</span> {menu.items[2]}</li>
               </ul>
             </div>
           ))}
@@ -166,8 +212,8 @@ export default function BanquetesPage() {
       <div className="max-w-5xl mx-auto mb-20 bg-[#5C4033] rounded-[3rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden">
         <div className="relative z-10">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-4xl font-bold mb-4">Diseña tu Menú Gourmet</h2>
-            <p className="text-white/80 max-w-xl mx-auto italic">Elige una opción de cada sección para crear un banquete único ($380 p/p).</p>
+            <h2 className="font-serif text-4xl font-bold mb-4">Diseña tu Propio Menú</h2>
+            <p className="text-white/80 max-w-xl mx-auto italic">Combina a tu gusto eligiendo una opción de cada sección ($380 p/p).</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -175,43 +221,43 @@ export default function BanquetesPage() {
               <h4 className="flex items-center gap-2 font-serif text-xl border-b border-white/20 pb-2 mb-6"><Soup className="w-5 h-5"/> Cremas</h4>
               <ul className="space-y-3 text-sm opacity-90">
                 <li>• Champiñones</li>
-                <li>• Elote dulce</li>
-                <li>• Zanahoria con calabaza</li>
-                <li>• Papa con tocineta y pollo deshebrado</li>
+                <li>• Elote Dulce</li>
+                <li>• Zanahoria con Calabaza</li>
+                <li>• Papa con Tocineta y Pollo</li>
               </ul>
             </div>
             <div>
               <h4 className="flex items-center gap-2 font-serif text-xl border-b border-white/20 pb-2 mb-6"><Utensils className="w-5 h-5"/> Pastas</h4>
               <ul className="space-y-3 text-sm opacity-90">
-                <li>• Espagueti en crema de chile poblano</li>
-                <li>• Espagueti en salsa fina de tres quesos</li>
-                <li>• Espagueti Aglio e Olio clásico</li>
-                <li>• Espagueti al Pomodoro o Crema Fina</li>
+                <li>• Espagueti en Crema Poblana</li>
+                <li>• Salsa Fina de Tres Quesos</li>
+                <li>• Aglio e Olio o Pomodoro</li>
+                <li>• Crema Fina (con o sin jamón)</li>
               </ul>
             </div>
             <div>
               <h4 className="flex items-center gap-2 font-serif text-xl border-b border-white/20 pb-2 mb-6"><ChefHat className="w-5 h-5"/> Plato Fuerte</h4>
               <ul className="space-y-3 text-sm opacity-90">
-                <li>• Pierna de cerdo adobada al horno</li>
-                <li>• Lomo en medallones (Salsa Mango-Habanero)</li>
-                <li>• Pechuga rellena en salsa de mango suave</li>
-                <li>• Pollo en salsa de champiñones</li>
+                <li>• Pierna de Cerdo Adobada</li>
+                <li>• Lomo en Medallones de Mango</li>
+                <li>• Pechuga Rellena en Salsa de Mango</li>
+                <li>• Pollo en Salsa de Champiñones</li>
               </ul>
             </div>
             <div>
               <h4 className="flex items-center gap-2 font-serif text-xl border-b border-white/20 pb-2 mb-6"><Sparkles className="w-5 h-5"/> Guarnición</h4>
               <ul className="space-y-3 text-sm opacity-90">
-                <li>• Espinacas a la crema fina</li>
-                <li>• Papas en crema suave con tocineta</li>
-                <li>• Papas baby a la mantequilla y hierbas</li>
-                <li>• Verduras al vapor o salteadas</li>
+                <li>• Espinacas a la Crema</li>
+                <li>• Papas en Crema con Tocineta</li>
+                <li>• Papas Baby a las Hierbas</li>
+                <li>• Verduras al Vapor o Salteadas</li>
               </ul>
             </div>
           </div>
         </div>
         {/* Decoración de fondo */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D35400]/20 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D35400]/20 rounded-full -ml-32 -mb-32 blur-3xl" />
       </div>
 
       {/* CTA FINAL */}

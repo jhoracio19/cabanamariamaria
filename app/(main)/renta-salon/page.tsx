@@ -33,8 +33,11 @@ export default function CotizadorPage() {
           <ul className="space-y-4 mb-8">
             {[
               "Uso de salón y jardín",
+              "Plato base",
+              "Juego de cubiertos",
+              "Vaso de vidrio",
               "Área de juegos infantiles",
-              "7 horas de evento + 1 de cortesía",
+              "7 horas de evento + 1 hora previa de cortesía para arreglo y montaje",
               "Refrigerador y parrilla disponible",
               "Estacionamiento",
               "Invitación Digital Inteligente (RSVP)"

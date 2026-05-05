@@ -5,7 +5,7 @@ export const metadata = {
   description: "Descubre nuestros deliciosos menús a 2 y 3 tiempos. Paquetes completos con mobiliario, servicio de meseros y más para tu evento en Tlaxcala.",
 };
 
-const WHATSAPP_CONTACTO = "522462278504";
+const WHATSAPP_CONTACTO = "522462132732";
 
 export default function TodoIncluidoPage() {
   const whatsappLink = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent("Hola, vi los menús del Paquete Todo Incluido en la página web y me interesa cotizar un evento.")}`;

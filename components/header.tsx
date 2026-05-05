@@ -1,12 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation"; // ¡NUEVO: Importamos usePathname!
 import { MessageCircle, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Obtenemos la ruta actual para saber en qué página estamos
+  const pathname = usePathname(); 
+  const isHomePage = pathname === "/"; // Verificamos si estamos en el inicio
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +22,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cerramos el menú si se cambia el tamaño de la pantalla a desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -27,18 +32,19 @@ export function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const navLinks = [
-    { href: "#beneficios", label: "Por qué elegirnos" },
-    { href: "#paquetes", label: "Paquetes" },
-    { href: "#galeria", label: "Galería" },
-    { href: "#contacto", label: "Contacto" },
+const navLinks = [
+    { href: "/#paquetes", label: "Paquetes" },
+    { href: "/banquetes", label: "Banquetes" }, // Responde a "Todo incluido qué?"
+    { href: "/renta-salon", label: "Cotizar Renta" }, // Responde a "Cotizador de qué?"
+    { href: "/#galeria", label: "Galería" },
+    { href: "/#contacto", label: "Contacto" },
   ];
 
   const waLink =
     "https://wa.me/522462132732?text=Hola,%20me%20interesa%20cotizar%20un%20evento%20en%20Cabaña%20María%20María";
 
-  // Variable de control para saber si el header debe ser sólido
-  const isSolid = isScrolled || isMobileMenuOpen;
+  // LA MAGIA: Si no es la página de inicio (!isHomePage), el header SIEMPRE será sólido
+  const isSolid = isScrolled || isMobileMenuOpen || !isHomePage;
 
   return (
     <header
@@ -51,7 +57,7 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 relative z-[110]">
+          <Link href="/" className="flex items-center gap-2 relative z-[110]">
             <span
               className={`font-serif text-xl md:text-2xl font-bold transition-colors ${
                 isSolid ? "text-[#5C4033]" : "text-white drop-shadow-md"
@@ -59,12 +65,12 @@ export function Header() {
             >
               Cabaña María María
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-[#D35400] ${
@@ -72,7 +78,7 @@ export function Header() {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -119,7 +125,7 @@ export function Header() {
       >
         <nav className="container mx-auto px-6 py-10 flex flex-col gap-6">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
@@ -129,7 +135,7 @@ export function Header() {
               <span className="text-[#D35400] opacity-0 group-hover:opacity-100 transition-opacity">
                 →
               </span>
-            </a>
+            </Link>
           ))}
           <Button
             asChild

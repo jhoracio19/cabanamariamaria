@@ -1,10 +1,13 @@
+import Link from "next/link"; // ¡NUEVA IMPORTACIÓN!
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
+// AQUÍ EL CAMBIO MAGISTRAL: Agregamos el / antes del #
 const quickLinks = [
-  { href: "#beneficios", label: "Por qué elegirnos" },
-  { href: "#paquetes", label: "Paquetes" },
-  { href: "#galeria", label: "Galería" },
-  { href: "#contacto", label: "Contacto" },
+    { href: "/#paquetes", label: "Paquetes" },
+    { href: "/banquetes", label: "Banquetes" }, // Responde a "Todo incluido qué?"
+    { href: "/renta-salon", label: "Cotizar Renta" }, // Responde a "Cotizador de qué?"
+    { href: "/#galeria", label: "Galería" },
+    { href: "/#contacto", label: "Contacto" },
 ];
 
 const socialLinks = [
@@ -42,6 +45,7 @@ export function Footer() {
             </p>
             {/* Redes Sociales con hover naranja */}
             <div className="flex gap-4">
+              {/* Estos se quedan como <a> porque van hacia afuera */}
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -63,15 +67,16 @@ export function Footer() {
               Enlaces Rápidos
             </h4>
             <ul className="space-y-4">
+              {/* Enlaces internos - Cambiado <a> por <Link> */}
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-[#FAF9F6]/70 hover:text-[#D35400] transition-colors text-lg font-sans flex items-center gap-2 group"
                   >
                     <span className="w-0 h-0.5 bg-[#D35400] group-hover:w-4 transition-all duration-300"></span>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -88,6 +93,7 @@ export function Footer() {
                 <br />
                 La Trinidad Tepehitec, Tlaxcala
               </p>
+              {/* Este es un enlace de teléfono, se queda como <a> */}
               <a
                 href="tel:+522462132732"
                 className="block text-[#D35400] font-bold hover:underline transition-all"
@@ -111,8 +117,9 @@ export function Footer() {
             <span className="hidden md:inline text-white/10">|</span>
             <p className="font-sans font-medium tracking-wide">
               Desarrollado por{" "}
-              <a href="https://jhdevagency.com/">
-                <span className="text-white font-bold">JH Dev Agency</span>
+              {/* Enlace externo a tu agencia, se queda como <a> */}
+              <a href="https://jhdevagency.com/" target="_blank" rel="noopener noreferrer">
+                <span className="text-white font-bold hover:text-[#D35400] transition-colors">JH Dev Agency</span>
               </a>
             </p>
           </div>

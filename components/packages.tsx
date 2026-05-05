@@ -66,7 +66,7 @@ export default function Packages() {
              </ul>
              
 <Link 
-                href="/todo-incluido"
+                href="/banquetes"
                 className="block w-full text-center bg-[#D35400] hover:bg-[#A84300] transition-colors text-white py-3 rounded-xl mt-auto font-bold"
              >
                Ver Menús y Detalles
@@ -119,7 +119,7 @@ export default function Packages() {
              
              {/* AQUÍ ESTÁ EL CAMBIO MÁGICO: Un Link directo a la nueva ruta */}
              <Link 
-                href="/cotizador"
+                href="/renta-salon"
                 className="block text-center w-full bg-[#5C4033] hover:bg-[#4A332A] text-white py-3 rounded-xl mt-auto font-bold transition-colors"
              >
                Cotizar mi Evento

@@ -1,139 +1,132 @@
-import { Check, Info } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Check, Info } from "lucide-react"; 
 
-const packages = [
-  {
-    name: "Paquete Todo Incluido",
-    price: " Desde 350",
-    unit: "por persona",
-    description:
-      "La solución completa para que tú solo te encargues de disfrutar.",
-    features: [
-      "Banquete",
-      "Servicio de meseros profesionales",
-      "7 horas de servicio",
-      "Montaje y desmontaje",
-      "Refrescos e insumos básicos",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Renta de Instalaciones",
-    price: "Desde 4,000",
-    unit: "pago único",
-    description:
-      "Ideal si ya cuentas con tu banquete y solo buscas el espacio perfecto.",
-    features: [
-      "Uso de salón y jardín",
-      "Área de juegos infantiles",
-      "7 horas de evento + 1 de cortesía",
-      "Refrigerador y parrilla disponible",
-      "Estacionamiento",
-    ],
-    highlight: false,
-  },
-];
+const WHATSAPP_CONTACTO = "522462278504";
 
-export function Packages() {
-  const waLink =
-    "https://wa.me/522462132732?text=Hola,%20me%20gustaría%20cotizar%20un%20evento.%20Me%20interesa%20saber%20los%20precios%20con%20sillas%20Tiffany/Madera.";
+export default function Packages() {
+  const whatsappTodoIncluido = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent("Hola, me interesa información sobre el Paquete Todo Incluido para mi evento.")}`;
 
   return (
-    <section id="paquetes" className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#D35400] font-sans font-bold text-xs md:text-sm uppercase tracking-[0.2em] mb-4 block">
-            Nuestros Paquetes
-          </span>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#5C4033] mb-6">
-            Planes a tu Medida
-          </h2>
-          <p className="font-sans text-[#2D3748]/70 text-lg">
-            Precios transparentes y flexibilidad total para cualquier tipo de
-            celebración.
+    <section className="py-20 bg-white" id="paquetes">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <p className="text-gray-600 mt-2">
+            Precios transparentes y flexibilidad total para cualquier tipo de celebración.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {packages.map((pkg, index) => (
-            <div
-              key={index}
-              className={`relative flex flex-col p-8 md:p-12 rounded-3xl border-2 transition-all duration-300 ${
-                pkg.highlight
-                  ? "border-[#D35400] shadow-2xl scale-105 z-10 bg-white"
-                  : "border-gray-100 bg-[#FAF9F6]"
-              }`}
-            >
-              {pkg.highlight && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#D35400] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-                  Más Popular
-                </span>
-              )}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
+          
+          {/* TARJETA 1: TODO INCLUIDO */}
+          <div className="border-2 border-[#D35400] rounded-3xl p-8 relative bg-white shadow-lg">
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#D35400] text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide">
+               MÁS POPULAR
+             </div>
+             
+             <h3 className="font-serif text-2xl font-bold text-[#5C4033] mb-2">Paquete Todo Incluido</h3>
+             <div className="flex items-baseline gap-2 mb-4">
+               <span className="text-4xl font-bold text-[#D35400]">$ Desde 300</span>
+               <span className="text-sm text-gray-500 leading-tight">por<br/>persona*</span>
+             </div>
+             <p className="text-gray-600 mb-6 text-sm">
+               La solución completa para que tú solo te encargues de disfrutar.
+             </p>
 
-              <div className="mb-8">
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#5C4033] mb-2">
-                  {pkg.name}
-                </h3>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl md:text-5xl font-bold text-[#D35400]">
-                    ${pkg.price}
-                  </span>
-                  <span className="text-[#2D3748]/60 font-medium">
-                    {pkg.unit}*
-                  </span>
-                </div>
-                <p className="text-[#2D3748]/70">{pkg.description}</p>
-              </div>
+             <div className="bg-[#FAF9F6] p-4 rounded-xl border border-gray-100 mb-6">
+               <div className="flex items-center gap-2 mb-3 text-[#D35400] text-xs font-bold">
+                 <Info className="w-4 h-4 flex-shrink-0" />
+                 MOBILIARIO INCLUIDO:
+               </div>
+               <ul className="text-xs text-gray-600 space-y-2 ml-6 list-disc mb-3">
+                 <li><strong>Mesas:</strong> Circulares o rectangulares a tu elección.</li>
+                 <li><strong>50 a 60 personas:</strong> Incluye Silla de Madera.</li>
+                 <li><strong>Más de 60 personas:</strong> Incluye Silla Plegable.</li>
+               </ul>
+               <div className="border-t border-gray-200 pt-2">
+                 <p className="text-[11px] text-gray-500">
+                   <strong className="text-[#D35400]">Mejora tu evento:</strong> Puedes cambiar a <strong>Silla Tiffany</strong> por un costo extra.
+                 </p>
+               </div>
+             </div>
 
-              {/* OPCIONES DE SILLAS - ESTO ES LO NUEVO */}
-              <div className="mb-8 p-4 bg-white/50 rounded-xl border border-[#D35400]/10">
-                <p className="text-xs font-bold text-[#D35400] uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <Info className="w-4 h-4" /> Personaliza tu Mobiliario:
-                </p>
-                <ul className="text-sm space-y-2 text-[#2D3748]/80">
-                  <li>• Silla Plegable (Económica)</li>
-                  <li>• Silla de Madera (Rústica/Elegante)</li>
-                  <li>• Silla Tiffany (Premium)</li>
-                </ul>
-                <p className="text-[10px] mt-2 italic text-gray-400">
-                  *El precio final varía según el tipo de silla seleccionada.
-                </p>
-              </div>
+             <ul className="space-y-3 mb-8">
+               {[
+                 "Banquete",
+                 "Servicio de meseros profesionales",
+                 "7 horas de servicio",
+                 "Montaje y desmontaje",
+                 "Refrescos e insumos básicos",
+                 "Invitación Digital Inteligente (RSVP)"
+               ].map((item, index) => (
+                 <li key={index} className="flex items-start gap-3 text-sm text-gray-700">
+                   <Check className="w-5 h-5 text-[#D35400] flex-shrink-0" />
+                   <span className={item.includes("Invitación") ? "font-bold text-[#D35400]" : ""}>{item}</span>
+                 </li>
+               ))}
+             </ul>
+             
+<Link 
+                href="/todo-incluido"
+                className="block w-full text-center bg-[#D35400] hover:bg-[#A84300] transition-colors text-white py-3 rounded-xl mt-auto font-bold"
+             >
+               Ver Menús y Detalles
+             </Link>
+          </div>
 
-              <ul className="space-y-4 mb-10 flex-grow">
-                {pkg.features.map((feature, fIndex) => (
-                  <li key={fIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#D35400] shrink-0 mt-0.5" />
-                    <span className="text-[#2D3748]/80 leading-tight">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+          {/* TARJETA 2: RENTA DE INSTALACIONES */}
+          <div className="bg-[#FAF9F6] border border-gray-100 rounded-3xl p-8 relative shadow-sm hover:shadow-md transition-shadow">
+             <h3 className="font-serif text-2xl font-bold text-[#5C4033] mb-2">Renta de Instalaciones</h3>
+             <div className="flex items-baseline gap-2 mb-4">
+               <span className="text-4xl font-bold text-[#D35400]">$Desde 4,500</span>
+               <span className="text-sm text-gray-500 leading-tight">pago<br/>único*</span>
+             </div>
+             <p className="text-gray-600 mb-6 text-sm">
+               Ideal si ya cuentas con tu banquete y solo buscas el espacio perfecto.
+             </p>
 
-              <Button
-                asChild
-                className={`w-full py-7 rounded-xl text-lg font-bold transition-all ${
-                  pkg.highlight
-                    ? "bg-[#D35400] hover:bg-[#a84300] text-white shadow-lg"
-                    : "bg-[#5C4033] hover:bg-[#3d2a22] text-white"
-                }`}
-              >
-                <a href={waLink} target="_blank">
-                  Cotizar mi Evento
-                </a>
-              </Button>
-            </div>
-          ))}
+             <div className="bg-white p-4 rounded-xl border border-gray-100 mb-6">
+               <div className="flex items-center gap-2 mb-3 text-[#D35400] text-xs font-bold">
+                 <Info className="w-4 h-4 flex-shrink-0" />
+                 MOBILIARIO INCLUIDO:
+               </div>
+               <ul className="text-xs text-gray-600 space-y-2 ml-6 list-disc mb-3">
+                 <li><strong>Mesas:</strong> Circulares o rectangulares a tu elección.</li>
+                 <li><strong>50 a 60 personas:</strong> Incluye Silla de Madera.</li>
+                 <li><strong>Más de 60 personas:</strong> Incluye Silla Plegable.</li>
+               </ul>
+               <div className="border-t border-gray-100 pt-2">
+                 <p className="text-[11px] text-gray-500">
+                    <strong className="text-[#D35400]">Mejora tu evento:</strong> Puedes cambiar a <strong>Silla Tiffany</strong> por un costo extra.
+                 </p>
+               </div>
+             </div>
+
+             <ul className="space-y-3 mb-8">
+               {[
+                 "Uso de salón y jardín",
+                 "Área de juegos infantiles",
+                 "7 horas de evento + 1 de cortesía",
+                 "Refrigerador y parrilla disponible",
+                 "Estacionamiento",
+                 "Invitación Digital Inteligente (RSVP)"
+               ].map((item, index) => (
+                 <li key={index} className="flex items-start gap-3 text-sm text-gray-700">
+                   <Check className="w-5 h-5 text-[#D35400] flex-shrink-0" />
+                   <span className={item.includes("Invitación") ? "font-bold text-[#D35400]" : ""}>{item}</span>
+                 </li>
+               ))}
+             </ul>
+             
+             {/* AQUÍ ESTÁ EL CAMBIO MÁGICO: Un Link directo a la nueva ruta */}
+             <Link 
+                href="/cotizador"
+                className="block text-center w-full bg-[#5C4033] hover:bg-[#4A332A] text-white py-3 rounded-xl mt-auto font-bold transition-colors"
+             >
+               Cotizar mi Evento
+             </Link>
+          </div>
+
         </div>
-
-        <p className="text-center mt-12 text-[#2D3748]/50 text-sm">
-          ¿Necesitas algo diferente?{" "}
-          <a href={waLink} className="text-[#D35400] underline font-bold">
-            Contáctanos
-          </a>{" "}
-          para armar un paquete personalizado.
-        </p>
       </div>
     </section>
   );

@@ -84,7 +84,7 @@ export default function RootLayout({
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 19.308726, // Coordenadas aproximadas de La Trinidad
+      latitude: 19.308726, 
       longitude: -98.241512,
     },
     priceRange: "$$",
@@ -92,12 +92,19 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <head>
-        <title>Next.js</title>
-      </head>
-      <body>
+    <html lang="es">
+      {/* Inyectamos las variables de las fuentes en el body */}
+      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
+        {/* Inyección del JSON-LD para SEO Local */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        
         {children}
+        
+        {/* Aquí renderizamos tu botón de WhatsApp y Vercel Analytics */}
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>

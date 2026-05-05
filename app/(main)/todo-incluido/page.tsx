@@ -42,7 +42,7 @@ export default function TodoIncluidoPage() {
             "Vitrolero de agua de Jamaica",
             "Refresco y hielos ilimitados por 3 horas",
             "Montaje, desmontaje y limpieza",
-            "Invitación Digital Inteligente (RSVP) 🎁"
+            "Invitación Digital Inteligente (RSVP)"
           ].map((item, index) => (
             <div key={index} className="flex items-start gap-3">
               <Check className="w-5 h-5 text-[#D35400] flex-shrink-0 mt-0.5" />

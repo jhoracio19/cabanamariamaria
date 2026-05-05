@@ -27,7 +27,7 @@ const SERVICIOS_EXTRAS = [
   { id: "horario", nombre: "Actividades fuera de horario", precio: 300, tipo: "fijo" }, // Cambiar precio si es necesario
 ];
 
-const WHATSAPP_CONTACTO = "522462278504";
+const WHATSAPP_CONTACTO = "522462132732";
 
 export function Cotizador() {
   const [personas, setPersonas] = useState<number>(50);

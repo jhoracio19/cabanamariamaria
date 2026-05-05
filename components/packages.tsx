@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Check, Info } from "lucide-react"; 
 
-const WHATSAPP_CONTACTO = "522462278504";
+const WHATSAPP_CONTACTO = "522462132732";
 
 export default function Packages() {
   const whatsappTodoIncluido = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent("Hola, me interesa información sobre el Paquete Todo Incluido para mi evento.")}`;

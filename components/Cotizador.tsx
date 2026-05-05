@@ -13,18 +13,18 @@ const PRECIOS_RENTA: Record<number, number> = {
   100: 6800,
 };
 
-// Arreglo actualizado con los datos reales de tu papá
+// Arreglo actualizado con el tipo 'por_mesa' para el sobremantel
 const SERVICIOS_EXTRAS = [
   { id: "trinche", nombre: "Loza: Plato trinche", precio: 5, tipo: "por_persona" },
   { id: "sopero", nombre: "Loza: Plato sopero", precio: 5, tipo: "por_persona" },
   { id: "tiffany", nombre: "Silla Tiffany", precio: 30, tipo: "por_persona" },
   { id: "servilletas", nombre: "Servilletas de tela", precio: 5, tipo: "por_persona" },
-  { id: "sobremantel", nombre: "Sobre mantel", precio: 50, tipo: "fijo" }, // Cambiar precio si es necesario
+  { id: "sobremantel", nombre: "Sobre mantel", precio: 50, tipo: "por_mesa" }, // ¡Corregido!
   { id: "dj", nombre: "DJ", precio: 4700, tipo: "fijo" },
   { id: "inflable", nombre: "Inflable", precio: 900, tipo: "fijo" },
   { id: "rockola", nombre: "Rockola", precio: 1800, tipo: "fijo" },
-  { id: "montaje", nombre: "Montaje y desmontaje", precio: 500, tipo: "fijo" }, // Cambiar precio si es necesario
-  { id: "horario", nombre: "Actividades fuera de horario", precio: 300, tipo: "fijo" }, // Cambiar precio si es necesario
+  { id: "montaje", nombre: "Montaje y desmontaje", precio: 500, tipo: "fijo" },
+  { id: "horario", nombre: "Actividades fuera de horario", precio: 300, tipo: "fijo" },
 ];
 
 const WHATSAPP_CONTACTO = "522462132732";
@@ -41,12 +41,16 @@ export function Cotizador() {
 
   const precioBase = PRECIOS_RENTA[personas];
 
+  // Lógica de cálculo actualizada para soportar cobro por mesa
   const costoExtras = extrasSeleccionados.reduce((total, idExtra) => {
     const extra = SERVICIOS_EXTRAS.find((e) => e.id === idExtra);
     if (!extra) return total;
 
     if (extra.tipo === "por_persona") {
-      return total + extra.precio * personas;
+      return total + (extra.precio * personas);
+    } else if (extra.tipo === "por_mesa") {
+      const numeroMesas = Math.ceil(personas / 10);
+      return total + (extra.precio * numeroMesas);
     } else {
       return total + extra.precio;
     }
@@ -104,6 +108,7 @@ export function Cotizador() {
             <span>50 min</span>
             <span>100 máx</span>
           </div>
+          <p className="text-[10px] text-center text-gray-400 mt-2 italic">Calculado en {Math.ceil(personas / 10)} mesas.</p>
         </div>
 
         <hr className="border-gray-100" />
@@ -139,8 +144,9 @@ export function Cotizador() {
                     </div>
                     <span className="text-sm font-medium text-gray-700">{extra.nombre}</span>
                   </div>
+                  {/* Etiqueta de precio dinámica según el tipo */}
                   <span className="text-xs text-gray-500 font-bold">
-                    +${extra.precio} {extra.tipo === "por_persona" && "c/u"}
+                    +${extra.precio} {extra.tipo === "por_persona" && "c/u"} {extra.tipo === "por_mesa" && "p/mesa"}
                   </span>
                 </label>
               );

@@ -1,3 +1,4 @@
+import BanqueteCotizador from "@/components/BanqueteCotizador";
 import { Check, Utensils, GlassWater, Sparkles, ChefHat, Soup, Beef, Drumstick, Clock } from "lucide-react";
 
 export const metadata = {
@@ -259,6 +260,7 @@ export default function BanquetesPage() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D35400]/20 rounded-full -ml-32 -mb-32 blur-3xl" />
       </div>
+    <BanqueteCotizador />
 
       {/* CTA FINAL */}
       <div className="max-w-2xl mx-auto text-center">

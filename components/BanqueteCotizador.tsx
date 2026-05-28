@@ -6,8 +6,16 @@ import { Calculator, Users, MessageCircle, Music, Castle, Disc, Layout, Layers }
 // Precios base definidos por el negocio
 const PRECIOS_MENU = {
   taquiza: 300,
+  buffetAsistido: 340,
   tradicional: 340,
   gourmet: 380
+};
+
+const NOMBRES_MENU: Record<keyof typeof PRECIOS_MENU, string> = {
+  taquiza: "Taquiza tradicional",
+  buffetAsistido: "Buffet catering asistido",
+  tradicional: "Menú tradicional a 2 tiempos",
+  gourmet: "Especialidades gourmet"
 };
 
 // Servicios extras con los precios exactos
@@ -64,7 +72,7 @@ export default function BanqueteCotizador() {
 
     const mensaje = `¡Hola! 👋 Coticé mi banquete en su página web:
 
-📍 *Paquete Seleccionado:* ${menu.toUpperCase()}
+📍 *Paquete Seleccionado:* ${NOMBRES_MENU[menu]}
 👥 *Número de Personas:* ${personas}
 ✨ *Servicios Adicionales:*
 ${extrasSeleccionados || "- Ninguno"}
@@ -99,7 +107,7 @@ ${extrasSeleccionados || "- Ninguno"}
                   onClick={() => setMenu(type)}
                   className={`p-4 rounded-2xl border-2 transition-all flex justify-between items-center ${menu === type ? "border-[#D35400] bg-orange-50 shadow-md" : "border-gray-100 bg-white hover:border-gray-200"}`}
                 >
-                  <span className="font-bold text-[#5C4033] capitalize">{type}</span>
+                  <span className="font-bold text-[#5C4033]">{NOMBRES_MENU[type]}</span>
                   <span className="font-bold text-[#D35400]">${PRECIOS_MENU[type]} p/p</span>
                 </button>
               ))}
@@ -159,7 +167,7 @@ ${extrasSeleccionados || "- Ninguno"}
             ${total.toLocaleString('es-MX')}
           </div>
           <p className="text-gray-500 text-sm mb-10 max-w-[250px]">
-            Incluye el paquete <span className="font-bold text-[#D35400] capitalize">{menu}</span> para <span className="font-bold text-[#D35400]">{personas} personas</span> y {serviciosExtras.length} servicios adicionales.
+            Incluye el paquete <span className="font-bold text-[#D35400]">{NOMBRES_MENU[menu]}</span> para <span className="font-bold text-[#D35400]">{personas} personas</span> y {serviciosExtras.length} servicios adicionales.
           </p>
 
           <button 

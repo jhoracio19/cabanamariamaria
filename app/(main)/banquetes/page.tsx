@@ -162,7 +162,7 @@ export default function BanquetesPage() {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {[
-                  "Cóctel frío", "Mix de lechuga", "Queso panela", "Ajonjolí caramelizado",
+                  "Mix de lechuga", "Queso panela", "Ajonjolí caramelizado",
                   "Aderezo mil islas", "Aderezo ranch", "Jícama", "Sandía", "Pastel",
                   "Agua de Jamaica", "Agua de limón"
                 ].map((item) => (

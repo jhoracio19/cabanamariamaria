@@ -59,7 +59,7 @@ export default function BanquetesPage() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Gran Taquiza Tradicional</h2>
           <span className="inline-block bg-[#5C4033] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $300 por persona
+            $250 por persona
           </span>
           <p className="mt-6 text-gray-600 italic">
             Incluye Arroz rojo, Frijoles refritos y Verduras. Elige un guisado de cada proteína:
@@ -147,7 +147,7 @@ export default function BanquetesPage() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Buffet Catering Asistido</h2>
           <span className="inline-block bg-[#D35400] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $340 por persona
+            $280 por persona
           </span>
           <p className="mt-6 text-gray-600 italic">
             Elige 1 opción de barra fría, 1 opción de barra caliente y 1 guisado de cada proteína.
@@ -264,7 +264,7 @@ export default function BanquetesPage() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Menú Tradicional a 2 Tiempos</h2>
           <span className="inline-block bg-[#D35400] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $340 por persona
+            $280 por persona
           </span>
         </div>
 
@@ -291,7 +291,7 @@ export default function BanquetesPage() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Especialidades Gourmet (3 Tiempos)</h2>
           <span className="inline-block bg-[#5C4033] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $380 por persona
+            $350 por persona
           </span>
         </div>
 
@@ -331,7 +331,7 @@ export default function BanquetesPage() {
         <div className="relative z-10">
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl font-bold mb-4">Diseña tu Propio Menú</h2>
-            <p className="text-white/80 max-w-xl mx-auto italic">Combina a tu gusto eligiendo una opción de cada sección ($380 p/p).</p>
+            <p className="text-white/80 max-w-xl mx-auto italic">Combina a tu gusto eligiendo una opción de cada sección ($350 p/p).</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">

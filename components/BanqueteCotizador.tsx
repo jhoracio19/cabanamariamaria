@@ -5,10 +5,10 @@ import { Calculator, Users, MessageCircle, Music, Castle, Disc, Layout, Layers }
 
 // Precios base definidos por el negocio
 const PRECIOS_MENU = {
-  taquiza: 300,
-  buffetAsistido: 340,
-  tradicional: 340,
-  gourmet: 380
+  taquiza: 250,
+  buffetAsistido: 280,
+  tradicional: 280,
+  gourmet: 350
 };
 
 const NOMBRES_MENU: Record<keyof typeof PRECIOS_MENU, string> = {

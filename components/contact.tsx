@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { track } from "@vercel/analytics/react";

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { CalendarCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link"; // ¡NUEVA IMPORTACIÓN!
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
 import { track } from "@vercel/analytics/react";

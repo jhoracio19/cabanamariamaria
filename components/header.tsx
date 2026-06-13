@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation"; // ¡NUEVO: Importamos usePathname!
 import { MessageCircle, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { track } from "@vercel/analytics/react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -92,7 +93,12 @@ const navLinks = [
                   : "bg-white text-[#D35400] hover:bg-gray-100"
               }`}
             >
-              <a href={waLink} target="_blank" rel="noopener noreferrer">
+              <a 
+                href={waLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={() => track('Clic_Ir_a_WhatsApp', { ubicacion: 'Header Desktop' })}
+              >
                 <MessageCircle className="w-4 h-4" />
                 <span>Cotizar</span>
               </a>
@@ -141,7 +147,12 @@ const navLinks = [
             asChild
             className="mt-6 bg-[#D35400] hover:bg-[#a84300] text-white gap-3 w-full h-14 text-lg font-bold shadow-xl"
           >
-            <a href={waLink} target="_blank" rel="noopener noreferrer">
+            <a 
+              href={waLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => track('Clic_Ir_a_WhatsApp', { ubicacion: 'Header Mobile' })}
+            >
               <MessageCircle className="w-6 h-6" />
               <span>Cotizar por WhatsApp</span>
             </a>

@@ -1,5 +1,6 @@
 import BanqueteCotizador from "@/components/BanqueteCotizador";
 import { Check, Utensils, GlassWater, Sparkles, ChefHat, Soup, Beef, Drumstick, Clock } from "lucide-react";
+import { WhatsAppCTA } from "@/components/WhatsAppCTA";
 
 export const metadata = {
   title: "Menús y Paquetes Todo Incluido | Cabaña María María",
@@ -381,14 +382,13 @@ export default function BanquetesPage() {
 
       {/* CTA FINAL */}
       <div className="max-w-2xl mx-auto text-center">
-        <a 
+        <WhatsAppCTA 
           href={whatsappLink} 
-          target="_blank" 
-          rel="noopener noreferrer"
+          ubicacion="Página Banquetes - CTA Final"
           className="inline-flex items-center gap-3 bg-[#D35400] text-white font-bold px-10 py-5 rounded-full text-xl hover:shadow-2xl transition-all hover:-translate-y-2"
         >
           Apartar Fecha por WhatsApp
-        </a>
+        </WhatsAppCTA>
       </div>
 
     </div>

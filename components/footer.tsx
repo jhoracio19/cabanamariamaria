@@ -1,5 +1,6 @@
 import Link from "next/link"; // ¡NUEVA IMPORTACIÓN!
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { track } from "@vercel/analytics/react";
 
 // AQUÍ EL CAMBIO MAGISTRAL: Agregamos el / antes del #
 const quickLinks = [
@@ -52,6 +53,11 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (social.label === 'WhatsApp') {
+                      track('Clic_Ir_a_WhatsApp', { ubicacion: 'Footer' });
+                    }
+                  }}
                   className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D35400] hover:scale-110 transition-all duration-300"
                   aria-label={social.label}
                 >

@@ -1,5 +1,6 @@
 import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { track } from "@vercel/analytics/react";
 
 export function Contact() {
   const waLink =
@@ -88,7 +89,12 @@ export function Contact() {
                 asChild
                 className="bg-[#D35400] hover:bg-[#a84300] text-white py-8 px-10 rounded-2xl shadow-xl shadow-orange-900/20 gap-3 text-lg font-bold transition-transform hover:scale-105"
               >
-                <a href={waLink} target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={waLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => track('Clic_Ir_a_WhatsApp', { ubicacion: 'Sección Contacto' })}
+                >
                   <MessageCircle className="w-6 h-6" />
                   <span>Agendar una Visita Guiada</span>
                 </a>

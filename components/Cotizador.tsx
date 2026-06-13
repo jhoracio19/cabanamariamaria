@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Users, CalendarCheck, Info, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { track } from "@vercel/analytics/react";
 
 const PRECIOS_RENTA: Record<number, number> = {
   50: 4500,
@@ -59,6 +60,13 @@ export function Cotizador() {
   const precioTotal = precioBase + costoExtras;
 
   const enviarWhatsApp = () => {
+    // Rastrear el evento con Vercel Analytics
+    track('Cotizar_Renta_Salon', {
+      personas,
+      total: precioTotal,
+      extras: extrasSeleccionados.join(", ")
+    });
+
     const nombresExtras = extrasSeleccionados.map((id) => {
       return SERVICIOS_EXTRAS.find((e) => e.id === id)?.nombre;
     }).join(", ");

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { Calculator, Users, MessageCircle, Music, Castle, Disc, Layout, Layers } from "lucide-react";
+import { track } from "@vercel/analytics/react";
 
 // Precios base definidos por el negocio
 const PRECIOS_MENU = {
@@ -59,6 +60,14 @@ export default function BanqueteCotizador() {
   };
 
   const generarWhatsApp = () => {
+    // Rastrear el evento con Vercel Analytics
+    track('Cotizar_Banquete', {
+      menu: NOMBRES_MENU[menu],
+      personas,
+      total,
+      extras: serviciosExtras.join(", ")
+    });
+
     const extrasSeleccionados = EXTRAS
       .filter(e => serviciosExtras.includes(e.id))
       .map(e => {

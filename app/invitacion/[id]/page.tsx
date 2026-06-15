@@ -34,7 +34,7 @@ const getEventData = (id: string) => {
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.406774937089!2d-98.25581129999999!3d19.308147299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1777844102262!5m2!1ses-419!2smx",
       themeColor: "#D81B60"
     },
-    "eliette-2-anos-vaquera": {
+    "eliette-2-anios-vaquera": {
       host: "la familia de Eliette", // Texto dinámico para el mensaje de WA
       celebrant: "Eliette",
       eventOrder: "Fiesta de 2 años",

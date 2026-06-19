@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -93,6 +94,21 @@ export default function RootLayout({
 
   return (
     <html lang="es">
+      <head>
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4TZD8TCTJ7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4TZD8TCTJ7');
+          `}
+        </Script>
+      </head>
       {/* Inyectamos las variables de las fuentes en el body */}
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
         {/* Inyección del JSON-LD para SEO Local */}

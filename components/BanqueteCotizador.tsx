@@ -59,27 +59,39 @@ export default function BanqueteCotizador() {
     );
   };
 
-  const generarWhatsApp = () => {
-    // Rastrear el evento con Vercel Analytics
-    track('Cotizar_Banquete', {
-      menu: NOMBRES_MENU[menu],
-      personas,
-      total,
-      extras: serviciosExtras.join(", ")
-    });
+const generarWhatsApp = () => {
+  // Rastrear en Vercel Analytics
+  track('Cotizar_Banquete', {
+    menu: NOMBRES_MENU[menu],
+    personas,
+    total,
+    extras: serviciosExtras.join(", ")
+  });
 
-    const extrasSeleccionados = EXTRAS
-      .filter(e => serviciosExtras.includes(e.id))
-      .map(e => {
-        let precioMostrado = "";
-        if(e.type === "por_persona") precioMostrado = `($${e.price} p/p)`;
-        if(e.type === "por_mesa") precioMostrado = `($${e.price} p/mesa)`;
-        if(e.type === "fijo") precioMostrado = `($${e.price.toLocaleString()})`;
-        return `- ${e.name} ${precioMostrado}`;
-      })
-      .join("\n");
+  // Rastrear en Google Analytics 4
+// Rastrear en Google Analytics 4
+if (typeof window !== 'undefined' && (window as any).gtag) {
+  (window as any).gtag('event', 'cotizacion_completada', {
+    'event_category': 'engagement',
+    'event_label': 'banquete',
+    'value': total,
+    'menu_type': NOMBRES_MENU[menu],
+    'personas': personas,
+    'cantidad_extras': serviciosExtras.length
+  });
+}
+  const extrasSeleccionados = EXTRAS
+    .filter(e => serviciosExtras.includes(e.id))
+    .map(e => {
+      let precioMostrado = "";
+      if(e.type === "por_persona") precioMostrado = `($${e.price} p/p)`;
+      if(e.type === "por_mesa") precioMostrado = `($${e.price} p/mesa)`;
+      if(e.type === "fijo") precioMostrado = `($${e.price.toLocaleString()})`;
+      return `- ${e.name} ${precioMostrado}`;
+    })
+    .join("\n");
 
-    const mensaje = `¡Hola! 👋 Coticé mi banquete en su página web:
+  const mensaje = `¡Hola! 👋 Coticé mi banquete en su página web:
 
 📍 *Paquete Seleccionado:* ${NOMBRES_MENU[menu]}
 👥 *Número de Personas:* ${personas}
@@ -90,8 +102,8 @@ ${extrasSeleccionados || "- Ninguno"}
 
 ¿Tienen disponibilidad para mi evento?`;
 
-    window.open(`https://wa.me/522462132732?text=${encodeURIComponent(mensaje)}`, "_blank");
-  };
+  window.open(`https://wa.me/522462132732?text=${encodeURIComponent(mensaje)}`, "_blank");
+};
 
   return (
     <div className="max-w-5xl mx-auto my-20 px-4">

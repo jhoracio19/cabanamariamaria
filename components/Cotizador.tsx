@@ -59,19 +59,31 @@ export function Cotizador() {
 
   const precioTotal = precioBase + costoExtras;
 
-  const enviarWhatsApp = () => {
-    // Rastrear el evento con Vercel Analytics
-    track('Cotizar_Renta_Salon', {
-      personas,
-      total: precioTotal,
-      extras: extrasSeleccionados.join(", ")
-    });
+const enviarWhatsApp = () => {
+  // Rastrear en Vercel Analytics
+  track('Cotizar_Renta_Salon', {
+    personas,
+    total: precioTotal,
+    extras: extrasSeleccionados.join(", ")
+  });
 
-    const nombresExtras = extrasSeleccionados.map((id) => {
-      return SERVICIOS_EXTRAS.find((e) => e.id === id)?.nombre;
-    }).join(", ");
+  // Rastrear en Google Analytics 4
+// Rastrear en Google Analytics 4
+if (typeof window !== 'undefined' && (window as any).gtag) {
+  (window as any).gtag('event', 'cotizacion_completada', {
+    'event_category': 'engagement',
+    'event_label': 'renta_salon',
+    'value': precioTotal,
+    'personas': personas,
+    'cantidad_extras': extrasSeleccionados.length
+  });
+}
 
-    const mensaje = `Hola, usé el cotizador web y me interesa rentar el salón.
+  const nombresExtras = extrasSeleccionados.map((id) => {
+    return SERVICIOS_EXTRAS.find((e) => e.id === id)?.nombre;
+  }).join(", ");
+
+  const mensaje = `Hola, usé el cotizador web y me interesa rentar el salón.
     
 👥 *Personas:* ${personas}
 🍽️ *Extras seleccionados:* ${nombresExtras || "Ninguno"}
@@ -79,9 +91,9 @@ export function Cotizador() {
 
 ¿Tienen fechas disponibles?`;
 
-    const url = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, "_blank");
-  };
+  const url = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+};
 
   return (
     <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden max-w-lg mx-auto">

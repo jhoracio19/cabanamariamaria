@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { CalendarCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { track } from "@vercel/analytics/react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export function Hero() {
   const waLink =
@@ -66,7 +66,7 @@ export function Hero() {
                 href={waLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                onClick={() => track('Clic_Ir_a_WhatsApp', { ubicacion: 'Hero' })}
+                onClick={() => trackWhatsAppClick("Hero", waLink)}
               >
                 <CalendarCheck className="w-6 h-6" />
                 <span className="font-bold">Agendar mi Fecha</span>

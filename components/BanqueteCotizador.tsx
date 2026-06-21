@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { Calculator, Users, MessageCircle, Music, Castle, Disc, Layout, Layers } from "lucide-react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { track } from "@vercel/analytics/react";
 
 // Precios base definidos por el negocio
@@ -102,7 +103,9 @@ ${extrasSeleccionados || "- Ninguno"}
 
 ¿Tienen disponibilidad para mi evento?`;
 
-  window.open(`https://wa.me/522462132732?text=${encodeURIComponent(mensaje)}`, "_blank");
+  const url = `https://wa.me/522462132732?text=${encodeURIComponent(mensaje)}`;
+  trackWhatsAppClick("Cotizador Banquetes", url);
+  window.open(url, "_blank");
 };
 
   return (

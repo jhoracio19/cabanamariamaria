@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Users, CalendarCheck, Info, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import { track } from "@vercel/analytics/react";
 
 const PRECIOS_RENTA: Record<number, number> = {
@@ -92,6 +93,7 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
 ¿Tienen fechas disponibles?`;
 
   const url = `https://wa.me/${WHATSAPP_CONTACTO}?text=${encodeURIComponent(mensaje)}`;
+  trackWhatsAppClick("Cotizador Renta", url);
   window.open(url, "_blank");
 };
 

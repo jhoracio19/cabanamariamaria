@@ -2,7 +2,7 @@
 
 import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { track } from "@vercel/analytics/react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export function Contact() {
   const waLink =
@@ -95,7 +95,7 @@ export function Contact() {
                   href={waLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  onClick={() => track('Clic_Ir_a_WhatsApp', { ubicacion: 'Sección Contacto' })}
+                  onClick={() => trackWhatsAppClick("Sección Contacto", waLink)}
                 >
                   <MessageCircle className="w-6 h-6" />
                   <span>Agendar una Visita Guiada</span>

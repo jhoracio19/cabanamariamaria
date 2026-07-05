@@ -7,7 +7,7 @@ export default function MenuTradicional() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Menú Tradicional a 2 Tiempos</h2>
           <span className="inline-block bg-[#D35400] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $280 por persona
+            $300 por persona
           </span>
         </div>
 

@@ -13,7 +13,7 @@ export default function TaquizaTradicional() {
             $250 por persona
           </span>
           <p className="mt-6 text-gray-600 italic">
-            Incluye Arroz rojo, Frijoles refritos y Verduras. Elige un guisado de cada proteína:
+            Incluye Arroz rojo, Frijoles refritos. Elige un guisado de cada proteína:
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export default function TaquizaTradicional() {
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                "Cochinita Pibil", "Costillas a la BBQ", "Carne enchilada tipo Pastor",
+                "Pipián rojo", "Costillas a la BBQ", "Carne enchilada tipo Pastor",
                 "Bistec en Morita con papas", "Puerco en adobo o mole verde",
                 "Chicharrones (Verde o Roja)", "Puerco en pasilla con nopales",
                 "Longaniza en salsa verde", "Puerco en chile quemado", "Puerco en verdolagas"
@@ -62,7 +62,7 @@ export default function TaquizaTradicional() {
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                "Tinga de pollo", "Pollo con mole rojo", "Pechuga rellena",
+                "Pipián rojo", "Pollo con mole rojo", "Pechuga rellena",
                 "Pollo en crema de chipotle", "Fajitas de pollo empanizada",
                 "Pollo al pastor", "Tortitas de pollo en pasilla",
                 "Pollo en chile quemado", "Pollo empapelado con vegetales"

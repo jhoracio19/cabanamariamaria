@@ -7,7 +7,7 @@ export default function Gourmet() {
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl font-bold text-[#5C4033] mb-2">Especialidades Gourmet (3 Tiempos)</h2>
           <span className="inline-block bg-[#5C4033] text-white px-8 py-2 rounded-full text-2xl font-bold shadow-lg">
-            $350 por persona
+            $360 por persona
           </span>
         </div>
 
@@ -15,15 +15,15 @@ export default function Gourmet() {
           {[
             {
               title: "Menú 1",
-              items: ["Ensalada Italiana", "Crema de Nuez con Amaretto", "Lomo en Salsa de Mango"]
+              items: ["Ensalada Italiana", "Crema de Nuez con un toque de Amaretto", "Lomo en Salsa de Mango"]
             },
             {
               title: "Menú 2",
-              items: ["Empanada de Atún", "Fettuccine Alfredo", "Lomo al Ajo Arriero"]
+              items: ["Empanada de Atún", "Fettuccine Alfredo", "Lomo de Cerdo al Ajo Arriero"]
             },
             {
               title: "Menú 3",
-              items: ["Ensalada Crujiente Cítrica", "Crema de Papa con Tocineta", "Suprema en Flor de Calabaza"]
+              items: ["Ensalada Crujiente Cítrica", "Crema de Papa con Tocineta", "Suprema de Pollo Rellena de Pimientos"]
             },
             {
               title: "Menú 4",

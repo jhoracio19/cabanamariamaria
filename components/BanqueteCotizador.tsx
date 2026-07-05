@@ -9,8 +9,8 @@ import { track } from "@vercel/analytics/react";
 const PRECIOS_MENU = {
   taquiza: 250,
   buffetAsistido: 280,
-  tradicional: 280,
-  gourmet: 350
+  tradicional: 300,
+  gourmet: 360
 };
 
 const NOMBRES_MENU: Record<keyof typeof PRECIOS_MENU, string> = {

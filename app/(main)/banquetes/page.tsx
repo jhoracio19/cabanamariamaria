@@ -41,8 +41,6 @@ export default function BanquetesPage() {
 
       <TaquizaTradicional />
 
-      <BuffetCatering />
-
       <MenuTradicional />
 
       <Gourmet />

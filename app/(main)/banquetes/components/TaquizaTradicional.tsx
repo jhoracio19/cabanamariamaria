@@ -1,4 +1,4 @@
-import { ChefHat, Sparkles, Utensils } from "lucide-react";
+import { ChefHat } from "lucide-react";
 
 export default function TaquizaTradicional() {
   return (
@@ -13,7 +13,7 @@ export default function TaquizaTradicional() {
             $250 por persona
           </div>
           <p className="mt-6 text-gray-600 text-lg italic max-w-2xl mx-auto">
-            Incluye Arroz rojo y Frijoles refritos. Elige tus guisados favoritos de nuestra gran variedad tradicional:
+            Incluye arroz rojo frijoles refritos y elige 3 guisados favoritos de nuestra gran variedad tradicional 
           </p>
         </div>
 
@@ -51,31 +51,6 @@ export default function TaquizaTradicional() {
                   <div className="w-2.5 h-2.5 bg-orange-400 rounded-full flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
                   <span className="leading-snug">{item}</span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Guarniciones de Verduras */}
-          <div className="pt-6 border-t border-gray-100">
-            <h4 className="font-serif text-lg font-bold text-[#5C4033] mb-6 text-center uppercase tracking-widest flex items-center justify-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#D35400]" /> Guarniciones de Verduras (Elige 1)
-            </h4>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "Papa al gratín", 
-                "Alambre de Portobello", 
-                "Setas a los tres chiles",
-                "Ensalada Rusa", 
-                "Salpicón de pollo", 
-                "Rajas poblanas", 
-                "Papas con chorizo"
-              ].map((v) => (
-                <span 
-                  key={v} 
-                  className="bg-orange-50 text-[#D35400] px-5 py-2.5 rounded-full text-xs md:text-sm font-bold border border-orange-100/60 hover:bg-[#D35400] hover:text-white hover:border-[#D35400] transition-colors duration-300 cursor-default"
-                >
-                  {v}
-                </span>
               ))}
             </div>
           </div>

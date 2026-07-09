@@ -8,14 +8,12 @@ import { track } from "@vercel/analytics/react";
 // Precios base definidos por el negocio
 const PRECIOS_MENU = {
   taquiza: 250,
-  buffetAsistido: 280,
   tradicional: 300,
   gourmet: 360
 };
 
 const NOMBRES_MENU: Record<keyof typeof PRECIOS_MENU, string> = {
   taquiza: "Taquiza tradicional",
-  buffetAsistido: "Buffet catering asistido",
   tradicional: "Menú tradicional a 2 tiempos",
   gourmet: "Especialidades gourmet"
 };

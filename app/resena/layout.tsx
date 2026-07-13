@@ -1,6 +1,6 @@
 import { MinimalPublicLayout } from "@/components/minimal-public-layout";
 
-export default function InvitacionLayout({
+export default function ResenaLayout({
   children,
 }: {
   children: React.ReactNode;

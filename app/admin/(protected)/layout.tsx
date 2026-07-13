@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession, destroySession } from "@/lib/session";
 
@@ -18,10 +19,20 @@ export default async function ProtectedAdminLayout({
   return (
     <div className="min-h-screen bg-[#FAF9F6] flex flex-col">
       <header className="bg-[#5C4033] text-white">
-        <div className="container mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
-          <span className="font-serif font-bold">
-            Panel de Invitaciones — Cabaña María María
-          </span>
+        <div className="container mx-auto px-4 lg:px-8 h-16 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-6">
+            <span className="font-serif font-bold shrink-0">
+              Panel — Cabaña María María
+            </span>
+            <nav className="hidden sm:flex items-center gap-4 text-sm">
+              <Link href="/admin" className="text-white/80 hover:text-white transition-colors">
+                Invitaciones
+              </Link>
+              <Link href="/admin/resenas" className="text-white/80 hover:text-white transition-colors">
+                Reseñas
+              </Link>
+            </nav>
+          </div>
           <div className="flex items-center gap-4 text-sm">
             <span className="text-white/70 hidden sm:inline">
               {session.email}

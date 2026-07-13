@@ -89,6 +89,17 @@ export default async function AdminDashboardPage({
                   Editar
                 </Link>
                 <span className="text-gray-300">|</span>
+                <a
+                  href={`https://wa.me/${inv.hostPhone}?text=${encodeURIComponent(
+                    `¡Hola ${inv.host}! 💛 Nos encantaría conocer tu experiencia en tu evento. ¿Nos regalas una reseña? cabanamariamaria.com/resena/${inv.id}`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-600 font-bold hover:underline"
+                >
+                  Pedir reseña
+                </a>
+                <span className="text-gray-300">|</span>
                 <DeleteInvitacionButton
                   id={inv.id}
                   label={`${inv.eventOrder} — ${inv.celebrant}`}

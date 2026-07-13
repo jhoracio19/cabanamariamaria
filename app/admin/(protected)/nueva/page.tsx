@@ -4,7 +4,7 @@ import { crearInvitacionAction } from "./actions";
 
 export default function NuevaInvitacionPage() {
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-6xl">
       <Link
         href="/admin"
         className="text-sm text-[#D35400] font-medium hover:underline mb-4 inline-block"

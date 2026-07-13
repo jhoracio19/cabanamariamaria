@@ -23,6 +23,34 @@ export function slugify(text: string): string {
     .replace(/(^-+|-+$)/g, "");
 }
 
+export interface FormattedDateTime {
+  date: string;
+  time: string;
+  targetDate: string;
+}
+
+// Compartido entre el parseo del Server Action y la vista previa en vivo
+// del formulario, para que ambos formateen la fecha exactamente igual.
+export function formatFromDatetimeLocal(
+  datetimeLocal: string,
+): FormattedDateTime | null {
+  const targetDate = new Date(datetimeLocal);
+  if (!datetimeLocal || Number.isNaN(targetDate.getTime())) return null;
+
+  const date = targetDate.toLocaleDateString("es-MX", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const time = targetDate.toLocaleTimeString("es-MX", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return { date, time, targetDate: targetDate.toISOString() };
+}
+
 export function parseInvitacionForm(
   formData: FormData,
 ): ParsedInvitacionFields | { error: string } {
@@ -46,21 +74,10 @@ export function parseInvitacionForm(
     return { error: "Completa todos los campos obligatorios." };
   }
 
-  const targetDate = new Date(datetimeLocal);
-  if (Number.isNaN(targetDate.getTime())) {
+  const formattedDate = formatFromDatetimeLocal(datetimeLocal);
+  if (!formattedDate) {
     return { error: "La fecha y hora no son válidas." };
   }
-
-  const date = targetDate.toLocaleDateString("es-MX", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  const time = targetDate.toLocaleTimeString("es-MX", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
 
   const digitsOnly = hostPhoneRaw.replace(/\D/g, "");
   const hostPhone = digitsOnly.startsWith("52") ? digitsOnly : `52${digitsOnly}`;
@@ -73,9 +90,7 @@ export function parseInvitacionForm(
     hostPhone,
     themeColor,
     customMessage: customMessage || undefined,
-    date,
-    time,
-    targetDate: targetDate.toISOString(),
+    ...formattedDate,
   };
 }
 

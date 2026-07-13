@@ -15,7 +15,7 @@ export default async function EditarInvitacionPage({
   if (!invitacion) notFound();
 
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-6xl">
       <Link
         href="/admin"
         className="text-sm text-[#D35400] font-medium hover:underline mb-4 inline-block"

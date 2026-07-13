@@ -1,15 +1,20 @@
 "use client";
 
 import Link from "next/link"; // ¡NUEVA IMPORTACIÓN!
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 
-// AQUÍ EL CAMBIO MAGISTRAL: Agregamos el / antes del #
+// Refleja el mismo orden e IA que el header (Paquetes -> Banquetes -> los dos
+// cotizadores por separado -> Galería -> Contacto) para que la navegación sea
+// consistente en todo el sitio.
 const quickLinks = [
     { href: "/#paquetes", label: "Paquetes" },
-    { href: "/banquetes", label: "Banquetes" }, // Responde a "Todo incluido qué?"
-    { href: "/renta-salon", label: "Cotizar Renta" }, // Responde a "Cotizador de qué?"
+    { href: "/banquetes", label: "Banquetes" },
+    { href: "/banquetes#cotizador-banquete", label: "Cotizador Todo Incluido" },
+    { href: "/renta-salon", label: "Cotizador Renta de Salón" },
     { href: "/#galeria", label: "Galería" },
+    { href: "/#preguntas-frecuentes", label: "Preguntas Frecuentes" },
     { href: "/#contacto", label: "Contacto" },
 ];
 
@@ -26,7 +31,7 @@ const socialLinks = [
   },
   {
     href: "https://wa.me/522462132732",
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     label: "WhatsApp",
   },
 ];

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Calculator, Users, MessageCircle, Music, Castle, Disc, Layout, Layers } from "lucide-react";
+import { Calculator, Users, Music, Castle, Disc, Layout, Layers } from "lucide-react";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { track } from "@vercel/analytics/react";
 
 // Precios base definidos por el negocio
@@ -107,7 +108,7 @@ ${extrasSeleccionados || "- Ninguno"}
 };
 
   return (
-    <div className="max-w-5xl mx-auto my-20 px-4">
+    <div id="cotizador-banquete" className="max-w-5xl mx-auto my-20 px-4 scroll-mt-28">
       <div className="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden grid md:grid-cols-2">
         
         {/* PANEL DE CONTROL */}
@@ -182,7 +183,7 @@ ${extrasSeleccionados || "- Ninguno"}
         {/* PANEL DE RESULTADO (RESUMEN) */}
         <div className="bg-[#FAF9F6] p-8 md:p-12 flex flex-col justify-center items-center text-center border-l border-gray-100">
           <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm border border-gray-100">
-             <MessageCircle className="w-10 h-10 text-[#25D366]" />
+             <WhatsAppIcon className="w-10 h-10 text-[#25D366]" />
           </div>
           <h3 className="text-gray-400 font-bold text-sm uppercase tracking-widest mb-2">Presupuesto Estimado</h3>
           <div className="text-5xl md:text-6xl font-serif font-bold text-[#5C4033] mb-4">

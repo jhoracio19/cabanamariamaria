@@ -4,6 +4,23 @@ import { Countdown } from "@/components/Countdown";
 
 const getEventData = (id: string) => {
   const events: any = {
+    // Invitación de ejemplo (datos ficticios) usada como demo pública en el
+    // sitio de marketing. El teléfono de RSVP apunta al WhatsApp del negocio
+    // (ya público en todo el sitio) para no exponer datos de clientes reales.
+    demo: {
+      host: "Familia González",
+      celebrant: "Sofía & Diego",
+      eventOrder: "Nuestra Boda",
+      date: "12 de Marzo, 2027",
+      time: "5:00 PM",
+      targetDate: "2027-03-12T17:00:00",
+      dressCode: "Formal",
+      hostPhone: "522462132732",
+      locationUrl: "https://maps.app.goo.gl/8QYeZPjLudsvLzrx6",
+      mapEmbedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.406774937089!2d-98.25581129999999!3d19.308147299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfd972fa12302d%3A0xe268168bb773c60c!2sCaba%C3%B1a%20Maria%20Maria!5e0!3m2!1ses-419!2smx!4v1777844102262!5m2!1ses-419!2smx",
+      themeColor: "#D35400",
+    },
     "1": {
       host: "Familia Ahuactzin",
       celebrant: "María Fernanda y María José",

@@ -1,8 +1,9 @@
 "use client";
 
-import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 
 export function Contact() {
   const waLink =
@@ -97,7 +98,7 @@ export function Contact() {
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick("Sección Contacto", waLink)}
                 >
-                  <MessageCircle className="w-6 h-6" />
+                  <WhatsAppIcon className="w-6 h-6" />
                   <span>Agendar una Visita Guiada</span>
                 </a>
               </Button>

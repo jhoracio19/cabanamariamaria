@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // ¡NUEVO: Importamos usePathname!
-import { MessageCircle, Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, UtensilsCrossed, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const [isQuoteMenuOpen, setIsQuoteMenuOpen] = useState(false);
+  const quoteMenuRef = useRef<HTMLDivElement>(null);
+
   // Obtenemos la ruta actual para saber en qué página estamos
-  const pathname = usePathname(); 
+  const pathname = usePathname();
   const isHomePage = pathname === "/"; // Verificamos si estamos en el inicio
 
   useEffect(() => {
@@ -33,12 +36,44 @@ export function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-const navLinks = [
+  // Cierra el submenú "Cotizador" al hacer clic fuera de él
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (quoteMenuRef.current && !quoteMenuRef.current.contains(event.target as Node)) {
+        setIsQuoteMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // navLinks se divide en "antes" y "después" del dropdown de Cotizador
+  // para mantener el orden lógico: Paquetes -> Banquetes -> Cotizador -> Galería -> Contacto
+  const navLinksBefore = [
     { href: "/#paquetes", label: "Paquetes" },
-    { href: "/banquetes", label: "Banquetes" }, // Responde a "Todo incluido qué?"
-    { href: "/renta-salon", label: "Cotizar Renta" }, // Responde a "Cotizador de qué?"
+    { href: "/banquetes", label: "Banquetes" },
+  ];
+  const navLinksAfter = [
     { href: "/#galeria", label: "Galería" },
+    { href: "/#preguntas-frecuentes", label: "Preguntas Frecuentes" },
     { href: "/#contacto", label: "Contacto" },
+  ];
+
+  // Los dos caminos de cotización que ofrece el negocio, explicados
+  // por separado para que el usuario elija el que corresponde a su caso.
+  const quoteOptions = [
+    {
+      href: "/banquetes#cotizador-banquete",
+      icon: UtensilsCrossed,
+      label: "Todo Incluido",
+      description: "Banquete + salón + mobiliario",
+    },
+    {
+      href: "/renta-salon",
+      icon: Home,
+      label: "Solo Renta del Salón",
+      description: "Tú pones el banquete, nosotros el espacio",
+    },
   ];
 
   const waLink =
@@ -70,7 +105,61 @@ const navLinks = [
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinksBefore.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-[#D35400] ${
+                  isSolid ? "text-[#2D3748]" : "text-white/90"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Dropdown "Cotizador": separa los dos productos (Todo Incluido vs Solo Renta)
+                para que el usuario no confunda cuál cotizador le corresponde */}
+            <div className="relative" ref={quoteMenuRef}>
+              <button
+                type="button"
+                onClick={() => setIsQuoteMenuOpen((open) => !open)}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#D35400] ${
+                  isSolid ? "text-[#2D3748]" : "text-white/90"
+                }`}
+                aria-expanded={isQuoteMenuOpen}
+                aria-haspopup="true"
+              >
+                Cotizador
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${isQuoteMenuOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {isQuoteMenuOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden py-2 z-[110]">
+                  {quoteOptions.map((option) => (
+                    <Link
+                      key={option.href}
+                      href={option.href}
+                      onClick={() => setIsQuoteMenuOpen(false)}
+                      className="flex items-start gap-3 px-5 py-3 hover:bg-[#FAF9F6] transition-colors"
+                    >
+                      <option.icon className="w-5 h-5 text-[#D35400] shrink-0 mt-0.5" />
+                      <span>
+                        <span className="block text-sm font-bold text-[#2D3748]">
+                          {option.label}
+                        </span>
+                        <span className="block text-xs text-gray-500">
+                          {option.description}
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {navLinksAfter.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -99,8 +188,8 @@ const navLinks = [
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick("Header Desktop", waLink)}
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Cotizar</span>
+                <WhatsAppIcon className="w-4 h-4" />
+                <span>Escríbenos</span>
               </a>
             </Button>
 
@@ -130,7 +219,49 @@ const navLinks = [
         }`}
       >
         <nav className="container mx-auto px-6 py-10 flex flex-col gap-6">
-          {navLinks.map((link) => (
+          {navLinksBefore.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-[#2D3748] font-serif text-2xl py-3 border-b border-gray-100 flex items-center justify-between group"
+            >
+              {link.label}
+              <span className="text-[#D35400] opacity-0 group-hover:opacity-100 transition-opacity">
+                →
+              </span>
+            </Link>
+          ))}
+
+          {/* En mobile no usamos dropdown: mostramos las dos opciones de
+              cotizador directamente, agrupadas visualmente bajo un mismo bloque */}
+          <div className="py-3 border-b border-gray-100">
+            <span className="block text-[#2D3748]/50 font-sans text-xs font-bold uppercase tracking-widest mb-3">
+              Cotizador
+            </span>
+            <div className="flex flex-col gap-4">
+              {quoteOptions.map((option) => (
+                <Link
+                  key={option.href}
+                  href={option.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-3 group"
+                >
+                  <option.icon className="w-5 h-5 text-[#D35400] shrink-0" />
+                  <span>
+                    <span className="block text-[#2D3748] font-serif text-xl leading-tight">
+                      {option.label}
+                    </span>
+                    <span className="block text-gray-500 text-xs">
+                      {option.description}
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {navLinksAfter.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -153,7 +284,7 @@ const navLinks = [
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick("Header Mobile", waLink)}
             >
-              <MessageCircle className="w-6 h-6" />
+              <WhatsAppIcon className="w-6 h-6" />
               <span>Cotizar por WhatsApp</span>
             </a>
           </Button>

@@ -35,10 +35,6 @@ export default function BanquetesPage() {
 
       <Services />
 
-      <Testimonials />
-
-      <BanqueteCotizador />
-
       <TaquizaTradicional />
 
       <MenuTradicional />
@@ -46,6 +42,8 @@ export default function BanquetesPage() {
       <Gourmet />
 
       <CustomMenu />
+
+      <Testimonials />
 
       <BanqueteCotizador />
 

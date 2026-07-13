@@ -1,4 +1,4 @@
-import { put, list } from "@vercel/blob";
+import { put, list, del } from "@vercel/blob";
 
 const INVITACIONES_PREFIX = "invitaciones/data/";
 
@@ -68,4 +68,13 @@ export async function uploadCoverImage(
     { access: "public", contentType: file.type },
   );
   return blob.url;
+}
+
+export async function deleteInvitacion(id: string): Promise<void> {
+  const existing = await getInvitacion(id);
+  const targets = [`${INVITACIONES_PREFIX}${id}.json`];
+  if (existing?.coverImageUrl) {
+    targets.push(existing.coverImageUrl);
+  }
+  await del(targets);
 }

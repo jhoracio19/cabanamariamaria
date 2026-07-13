@@ -16,7 +16,7 @@ export default async function ProtectedAdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6]">
+    <div className="min-h-screen bg-[#FAF9F6] flex flex-col">
       <header className="bg-[#5C4033] text-white">
         <div className="container mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
           <span className="font-serif font-bold">
@@ -37,7 +37,25 @@ export default async function ProtectedAdminLayout({
           </div>
         </div>
       </header>
-      <main className="container mx-auto px-4 lg:px-8 py-10">{children}</main>
+      <main className="container mx-auto px-4 lg:px-8 py-10 flex-1">
+        {children}
+      </main>
+      <footer className="border-t border-gray-200 py-6">
+        <div className="container mx-auto px-4 lg:px-8 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-400">
+          <span>
+            © {new Date().getFullYear()} Cabaña María María — Panel interno,
+            no indexado.
+          </span>
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#D35400] transition-colors"
+          >
+            Ver sitio público ↗
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

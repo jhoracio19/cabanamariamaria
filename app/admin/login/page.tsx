@@ -12,7 +12,7 @@ export default function LoginPage() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAF9F6] px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF9F6] px-4 py-10">
       <form
         action={formAction}
         className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8 w-full max-w-sm space-y-5"
@@ -62,6 +62,9 @@ export default function LoginPage() {
           {isPending ? "Entrando..." : "Entrar"}
         </button>
       </form>
+      <p className="text-xs text-gray-400 mt-6">
+        © {new Date().getFullYear()} Cabaña María María — Panel interno
+      </p>
     </div>
   );
 }

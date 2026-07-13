@@ -15,6 +15,11 @@ export const metadata = {
   description: "Explora nuestra variedad de banquetes: Taquizas, Menús a 2 y 3 tiempos. Todo incluido con mobiliario, meseros y salón en Tlaxcala.",
 };
 
+// Refresca cada minuto para que las reseñas recién aprobadas aparezcan
+// aunque la revalidación al aprobar no alcance a ganarle a la consistencia
+// eventual de Vercel Blob.
+export const revalidate = 60;
+
 const WHATSAPP_CONTACTO = "522462132732";
 
 export default function BanquetesPage() {

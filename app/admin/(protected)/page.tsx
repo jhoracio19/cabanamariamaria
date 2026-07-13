@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Eye, Pencil, MessageCircleHeart } from "lucide-react";
 import { listInvitaciones } from "@/lib/blob-store";
 import { DeleteInvitacionButton } from "@/components/admin/delete-invitacion-button";
 
@@ -72,34 +73,34 @@ export default async function AdminDashboardPage({
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-sm flex-wrap">
+              <div className="flex items-center gap-2 text-sm flex-wrap">
                 <a
                   href={`/invitacion/${inv.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#D35400] font-bold hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-[#D35400]/10 text-[#D35400] hover:bg-[#D35400]/20 transition-colors"
                 >
-                  Ver ↗
+                  <Eye className="w-3.5 h-3.5" />
+                  Ver
                 </a>
-                <span className="text-gray-300">|</span>
                 <Link
                   href={`/admin/${inv.id}/editar`}
-                  className="text-[#5C4033] font-bold hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-[#5C4033]/10 text-[#5C4033] hover:bg-[#5C4033]/20 transition-colors"
                 >
+                  <Pencil className="w-3.5 h-3.5" />
                   Editar
                 </Link>
-                <span className="text-gray-300">|</span>
                 <a
                   href={`https://wa.me/${inv.hostPhone}?text=${encodeURIComponent(
                     `¡Hola ${inv.host}! 💛 Nos encantaría conocer tu experiencia en tu evento. ¿Nos regalas una reseña? cabanamariamaria.com/resena/${inv.id}`,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-600 font-bold hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-green-50 text-green-600 hover:bg-green-100 transition-colors"
                 >
+                  <MessageCircleHeart className="w-3.5 h-3.5" />
                   Pedir reseña
                 </a>
-                <span className="text-gray-300">|</span>
                 <DeleteInvitacionButton
                   id={inv.id}
                   label={`${inv.eventOrder} — ${inv.celebrant}`}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { Trash2 } from "lucide-react";
 import { eliminarInvitacionAction } from "@/app/admin/(protected)/actions";
 
 export function DeleteInvitacionButton({
@@ -25,8 +26,9 @@ export function DeleteInvitacionButton({
           eliminarInvitacionAction(id);
         });
       }}
-      className="text-red-500 hover:text-red-700 font-medium disabled:opacity-50"
+      className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-red-50 text-red-600 hover:bg-red-100 transition-colors disabled:opacity-50"
     >
+      <Trash2 className="w-3.5 h-3.5" />
       {isPending ? "Eliminando..." : "Eliminar"}
     </button>
   );

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { EventTypes } from "@/components/event-types";
 import { Benefits } from "@/components/benefits";
 import  Packages  from "@/components/packages";
 import { DigitalInvite } from "@/components/digital-invite";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <EventTypes />
       <Benefits />
       <Packages />
       <DigitalInvite />

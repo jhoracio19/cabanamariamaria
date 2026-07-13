@@ -124,9 +124,9 @@ export function Footer() {
             reservados.
           </p>
           <div className="flex gap-8 items-center">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link href="/aviso-privacidad" className="hover:text-white transition-colors">
               Aviso de Privacidad
-            </a>
+            </Link>
             <span className="hidden md:inline text-white/10">|</span>
             <p className="font-sans font-medium tracking-wide">
               Desarrollado por{" "}

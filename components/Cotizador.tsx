@@ -7,22 +7,31 @@ import { trackWhatsAppClick } from "@/lib/analytics";
 import { track } from "@vercel/analytics/react";
 
 const PRECIOS_RENTA: Record<number, number> = {
-  50: 4500,
-  60: 5000,
-  70: 5500,
-  80: 6000,
-  90: 6400,
-  100: 6800,
+  50: 3500,
+  60: 3600,
+  70: 3700,
+  80: 3800,
+  90: 3900,
+  100: 4000,
 };
 
-// Arreglo actualizado con el tipo 'por_mesa' para el sobremantel
+// Mesas con sillas incluidas: se agregan por cantidad (ya no van incluidas según el número de invitados)
+const MESAS_EXTRAS = [
+  { id: "mesaRectangularRedonda", nombre: "Mesa rectangular o redonda con 10 sillas (acojinable)", precio: 150 },
+  { id: "mesaCuadrada", nombre: "Mesa cuadrada con 12 sillas", precio: 400 },
+];
+
 const SERVICIOS_EXTRAS = [
   { id: "trinche", nombre: "Loza: Plato trinche", precio: 5, tipo: "por_persona" },
   { id: "sopero", nombre: "Loza: Plato sopero", precio: 5, tipo: "por_persona" },
+  { id: "base", nombre: "Loza: Plato base", precio: 5, tipo: "por_persona" },
+  { id: "cubiertos", nombre: "Juego de cubiertos", precio: 5, tipo: "por_persona" },
+  { id: "vaso", nombre: "Vaso de vidrio", precio: 2, tipo: "por_persona" },
   { id: "tiffany", nombre: "Silla Tiffany", precio: 30, tipo: "por_persona" },
   { id: "servilletas", nombre: "Servilletas de tela", precio: 5, tipo: "por_persona" },
-  { id: "sobremantel", nombre: "Sobre mantel", precio: 50, tipo: "por_mesa" }, // ¡Corregido!
-  { id: "dj", nombre: "DJ", precio: 4700, tipo: "fijo" },
+  { id: "mantel", nombre: "Mantel para tus mesas", precio: 50, tipo: "por_mesa" },
+  { id: "sobremantel", nombre: "Sobre mantel para tus mesas", precio: 50, tipo: "por_mesa" },
+  { id: "dj", nombre: "DJ", precio: 4800, tipo: "fijo" },
   { id: "inflable", nombre: "Inflable", precio: 900, tipo: "fijo" },
   { id: "rockola", nombre: "Rockola", precio: 1800, tipo: "fijo" },
   { id: "montaje", nombre: "Montaje y desmontaje", precio: 500, tipo: "fijo" },
@@ -34,6 +43,10 @@ const WHATSAPP_CONTACTO = "522462132732";
 export function Cotizador() {
   const [personas, setPersonas] = useState<number>(50);
   const [extrasSeleccionados, setExtrasSeleccionados] = useState<string[]>([]);
+  const [mesasExtras, setMesasExtras] = useState<Record<string, number>>({
+    mesaRectangularRedonda: 0,
+    mesaCuadrada: 0,
+  });
 
   const toggleExtra = (id: string) => {
     setExtrasSeleccionados((prev) =>
@@ -41,9 +54,23 @@ export function Cotizador() {
     );
   };
 
+  const cambiarCantidadMesa = (id: string, delta: number) => {
+    setMesasExtras((prev) => ({
+      ...prev,
+      [id]: Math.max(0, (prev[id] || 0) + delta),
+    }));
+  };
+
   const precioBase = PRECIOS_RENTA[personas];
 
-  // Lógica de cálculo actualizada para soportar cobro por mesa
+  const totalMesasExtra = Object.values(mesasExtras).reduce((total, cantidad) => total + cantidad, 0);
+
+  const costoMesas = MESAS_EXTRAS.reduce(
+    (total, mesa) => total + mesa.precio * (mesasExtras[mesa.id] || 0),
+    0
+  );
+
+  // Los items "por_mesa" (mantel, sobremantel) se cobran según las mesas extra agregadas arriba
   const costoExtras = extrasSeleccionados.reduce((total, idExtra) => {
     const extra = SERVICIOS_EXTRAS.find((e) => e.id === idExtra);
     if (!extra) return total;
@@ -51,20 +78,20 @@ export function Cotizador() {
     if (extra.tipo === "por_persona") {
       return total + (extra.precio * personas);
     } else if (extra.tipo === "por_mesa") {
-      const numeroMesas = Math.ceil(personas / 10);
-      return total + (extra.precio * numeroMesas);
+      return total + (extra.precio * totalMesasExtra);
     } else {
       return total + extra.precio;
     }
   }, 0);
 
-  const precioTotal = precioBase + costoExtras;
+  const precioTotal = precioBase + costoMesas + costoExtras;
 
 const enviarWhatsApp = () => {
   // Rastrear en Vercel Analytics
   track('Cotizar_Renta_Salon', {
     personas,
     total: precioTotal,
+    mesasExtra: totalMesasExtra,
     extras: extrasSeleccionados.join(", ")
   });
 
@@ -80,14 +107,20 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
   });
 }
 
+  const nombresMesas = MESAS_EXTRAS
+    .filter((mesa) => (mesasExtras[mesa.id] || 0) > 0)
+    .map((mesa) => `${mesasExtras[mesa.id]}x ${mesa.nombre}`);
+
   const nombresExtras = extrasSeleccionados.map((id) => {
     return SERVICIOS_EXTRAS.find((e) => e.id === id)?.nombre;
-  }).join(", ");
+  });
+
+  const todosLosExtras = [...nombresMesas, ...nombresExtras].join(", ");
 
   const mensaje = `Hola, usé el cotizador web y me interesa rentar el salón.
-    
+
 👥 *Personas:* ${personas}
-🍽️ *Extras seleccionados:* ${nombresExtras || "Ninguno"}
+🍽️ *Extras seleccionados:* ${todosLosExtras || "Ninguno"}
 💰 *Total aproximado:* $${precioTotal} MXN
 
 ¿Tienen fechas disponibles?`;
@@ -130,7 +163,48 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
             <span>50 min</span>
             <span>100 máx</span>
           </div>
-          <p className="text-[10px] text-center text-gray-400 mt-2 italic">Calculado en {Math.ceil(personas / 10)} mesas.</p>
+        </div>
+
+        <hr className="border-gray-100" />
+
+        {/* Mesas Extra (cantidad) */}
+        <div>
+          <label className="flex items-center gap-2 font-bold text-gray-700 mb-4">
+            <PlusCircle className="w-5 h-5 text-[#D35400]" />
+            Mesas Extra (con sillas incluidas)
+          </label>
+          <div className="space-y-2">
+            {MESAS_EXTRAS.map((mesa) => (
+              <div
+                key={mesa.id}
+                className="flex items-center justify-between p-3 rounded-xl border border-gray-200"
+              >
+                <div>
+                  <span className="text-sm font-medium text-gray-700 block">{mesa.nombre}</span>
+                  <span className="text-xs text-gray-500">${mesa.precio} c/u</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => cambiarCantidadMesa(mesa.id, -1)}
+                    className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#D35400] hover:text-[#D35400]"
+                  >
+                    -
+                  </button>
+                  <span className="w-5 text-center font-bold text-gray-700">
+                    {mesasExtras[mesa.id] || 0}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => cambiarCantidadMesa(mesa.id, 1)}
+                    className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#D35400] hover:text-[#D35400]"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <hr className="border-gray-100" />
@@ -168,7 +242,9 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
                   </div>
                   {/* Etiqueta de precio dinámica según el tipo */}
                   <span className="text-xs text-gray-500 font-bold">
-                    +${extra.precio} {extra.tipo === "por_persona" && "c/u"} {extra.tipo === "por_mesa" && "p/mesa"}
+                    {extra.tipo === "por_mesa"
+                      ? `+$${extra.precio * totalMesasExtra} (${totalMesasExtra} mesas)`
+                      : `+$${extra.precio} ${extra.tipo === "por_persona" ? "c/u" : ""}`}
                   </span>
                 </label>
               );
@@ -182,6 +258,12 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
             <span>Renta Base:</span>
             <span>${precioBase}</span>
           </div>
+          {costoMesas > 0 && (
+            <div className="flex justify-between text-sm text-[#D35400] mb-2">
+              <span>Mesas Extra ({totalMesasExtra}):</span>
+              <span>+ ${costoMesas}</span>
+            </div>
+          )}
           {costoExtras > 0 && (
             <div className="flex justify-between text-sm text-[#D35400] mb-2">
               <span>Extras ({extrasSeleccionados.length}):</span>

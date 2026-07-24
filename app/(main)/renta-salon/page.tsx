@@ -33,11 +33,8 @@ export default function CotizadorPage() {
           <ul className="space-y-4 mb-8">
             {[
               "Uso de salón y jardín",
-              "Plato base",
-              "Juego de cubiertos",
-              "Vaso de vidrio",
               "Área de juegos infantiles",
-              "7 horas de evento + 1 hora previa de cortesía para arreglo y montaje",
+              "7 horas de evento + 2 horas previas de cortesía para arreglo y montaje",
               "Refrigerador y parrilla disponible",
               "Estacionamiento",
               "Invitación Digital Inteligente (RSVP)"
@@ -55,13 +52,11 @@ export default function CotizadorPage() {
               MOBILIARIO INCLUIDO:
             </div>
             <ul className="text-sm text-gray-600 space-y-2 ml-6 list-disc mb-3">
-              <li><strong>Mesas:</strong> Circulares o rectangulares a tu elección.</li>
-              <li><strong>50 a 60 personas:</strong> Incluye Silla de Madera.</li>
-              <li><strong>Más de 60 personas:</strong> Incluye Silla Plegable.</li>
+              <li>Únicamente en este paquete se incluyen <strong>50 Sillas de Madera</strong>.</li>
             </ul>
             <div className="border-t border-gray-200 pt-3 mt-4">
               <p className="text-xs text-gray-500">
-                ✨ <strong className="text-[#D35400]">Mejora tu evento:</strong> Puedes cambiar a <strong>Silla Tiffany</strong> u otros extras directamente en el cotizador.
+                ✨ <strong className="text-[#D35400]">¿Necesitas más mobiliario?</strong> Agrega mesas con sillas incluidas, Silla Tiffany u otros extras directamente en el cotizador.
               </p>
             </div>
           </div>

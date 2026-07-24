@@ -80,6 +80,11 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
     'cantidad_extras': serviciosExtras.length
   });
 }
+
+  // Rastrear en Meta Pixel
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'Lead');
+  }
   const extrasSeleccionados = EXTRAS
     .filter(e => serviciosExtras.includes(e.id))
     .map(e => {

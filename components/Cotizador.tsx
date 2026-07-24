@@ -107,6 +107,11 @@ if (typeof window !== 'undefined' && (window as any).gtag) {
   });
 }
 
+  // Rastrear en Meta Pixel
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'Lead');
+  }
+
   const nombresMesas = MESAS_EXTRAS
     .filter((mesa) => (mesasExtras[mesa.id] || 0) > 0)
     .map((mesa) => `${mesasExtras[mesa.id]}x ${mesa.nombre}`);

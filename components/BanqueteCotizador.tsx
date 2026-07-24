@@ -109,7 +109,11 @@ ${extrasSeleccionados || "- Ninguno"}
 
   const url = `https://wa.me/522462132732?text=${encodeURIComponent(mensaje)}`;
   trackWhatsAppClick("Cotizador Banquetes", url);
-  window.open(url, "_blank");
+
+  // Pequeño margen para que el navegador alcance a despachar los eventos de tracking
+  setTimeout(() => {
+    window.open(url, "_blank");
+  }, 200);
 };
 
   return (
